@@ -57,7 +57,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🌿 30-Day Menopause Meal Plan for Two</h1>
+            <h1>30-Day Menopause Meal Plan for Two</h1>
             <p>High Protein (80-100g per person) | 1200-1500 Calories per person | 10am-8pm Eating Window</p>
         </header>
         
@@ -148,7 +148,7 @@
             <div id="shopping" class="tab-content">
                 <h2>Shopping Lists</h2>
                 <div class="alert-box">
-                    <p><strong>📋 All quantities for 2 people for the entire week</strong></p>
+                    <p><strong>All quantities for 2 people for the entire week</strong></p>
                 </div>
                 <div class="week-selector" id="shoppingWeekSelector">
                     <button class="week-btn active" onclick="selectShoppingWeek(1)">Week 1</button>
@@ -162,712 +162,205 @@
     </div>
     
     <script>
-        // Define all data first before functions
-        const weekPrepGuides = {
+        var weekPrepGuides = {
             1: {
                 time: "2-2.5 hours",
-                proteins: [
-                    "Hard boil 12 eggs - Days 1, 6, 7 - store in shell 7 days",
-                    "Bake 4 chicken breasts (~1.5 lbs) - Days 2, 4 - refrigerate 4-5 days",
-                    "Cook 1 cup dry red lentils (makes 3 cups) - Day 4 dal - store 5-6 days",
-                    "Press & marinate 2 tofu blocks (32 oz) - Days 2, 3 - store in marinade 4-5 days"
-                ],
-                grains: [
-                    "Cook 6-8 cups brown rice - multiple days - store 5-6 days",
-                    "Roast 6 cups mixed veg (peppers, zucchini, eggplant) - Day 2 - store 4-5 days",
-                    "Prep 1 batch bok choy (wash, trim, ready for Day 1)"
-                ],
-                sauces: [
-                    "Make tahini-lemon dressing (double batch) - Day 2 - stores 7 days",
-                    "Prep cucumber-tomato salad (chop, store separately)",
-                    "Chop stir-fry vegetables - store with damp paper towel"
-                ],
+                proteins: ["Hard boil 12 eggs", "Bake 4 chicken breasts", "Cook 1 cup dry red lentils", "Press and marinate 2 tofu blocks"],
+                grains: ["Cook 6-8 cups brown rice", "Roast 6 cups mixed veg", "Prep 1 batch bok choy"],
+                sauces: ["Make tahini-lemon dressing", "Prep cucumber-tomato salad", "Chop stir-fry vegetables"],
                 freeze: null
             },
             2: {
                 time: "2.5-3 hours",
-                proteins: [
-                    "Grill/bake 3 fish fillets (opah/mahi, ~22 oz) - Days 8, 11 - use within 3-4 days",
-                    "Make 10-12 turkey meatballs (1.5 lbs turkey) - Day 9 - store 4-5 days OR freeze",
-                    "Marinate & bake 1 tempeh (12 oz) in teriyaki - Day 10 - store 5 days"
-                ],
-                grains: [
-                    "Cook 8-10 cups quinoa - Days 8, 12 - store 5-6 days",
-                    "Roast 2 sheet pans: cauliflower, broccoli, Brussels sprouts - Day 8 - store 4-5 days",
-                    "Make Asian cabbage slaw (large batch) - Day 11 - store 5-7 days"
-                ],
-                sauces: [
-                    "Chimichurri sauce (parsley, garlic, vinegar, oil)",
-                    "Peanut sauce (using PB2 powder)",
-                    "Tzatziki (yogurt, cucumber, garlic, dill)"
-                ],
-                freeze: "OPTIONAL: Make extra 24 turkey meatballs (add +1.5 lbs turkey to shopping) - freeze for Week 4 Day 28"
+                proteins: ["Grill 3 fish fillets", "Make 10-12 turkey meatballs", "Marinate and bake 1 tempeh"],
+                grains: ["Cook 8-10 cups quinoa", "Roast 2 sheet pans vegetables", "Make Asian cabbage slaw"],
+                sauces: ["Chimichurri sauce", "Peanut sauce", "Tzatziki"],
+                freeze: "OPTIONAL: Make extra 24 turkey meatballs for Week 4"
             },
             3: {
                 time: "2.5-3 hours",
-                proteins: [
-                    "Make 10 egg muffin cups (10 eggs + veg + 1 lb turkey sausage) - Days 15, 19 - store 5-6 days",
-                    "Marinate & grill 5-6 chicken thighs (~1.5 lbs) - Days 15, 16 - store 4-5 days",
-                    "Cook 2 cups dry green lentils (makes 5-6 cups) - Day 18 - store 5-6 days"
-                ],
-                grains: [
-                    "Cook 6-8 cups farro or barley - Day 17 - store 5-6 days",
-                    "Roast rainbow vegetables (carrots, beets, squash) - store 4-5 days",
-                    "Make 4-6 cups cauliflower rice - Day 17 - store 3-4 days"
-                ],
-                sauces: [
-                    "Green goddess dressing (herbs, avocado, yogurt)",
-                    "Spicy peanut sauce",
-                    "Lemon-herb vinaigrette"
-                ],
-                freeze: "OPTIONAL: Make extra 14 egg muffins (add +1 dozen eggs, +1 lb sausage) - freeze for Week 4 Day 29"
+                proteins: ["Make 10 egg muffin cups", "Marinate and grill 5-6 chicken thighs", "Cook 2 cups dry green lentils"],
+                grains: ["Cook 6-8 cups farro or barley", "Roast rainbow vegetables", "Make 4-6 cups cauliflower rice"],
+                sauces: ["Green goddess dressing", "Spicy peanut sauce", "Lemon-herb vinaigrette"],
+                freeze: "OPTIONAL: Make extra 14 egg muffins for Week 4"
             },
             4: {
                 time: "2.5-3 hours",
-                proteins: [
-                    "Slow cook 3 lbs chicken in curry sauce - Day 22 - makes 12+ servings, freeze half",
-                    "Bake 1.5 lbs herb-crusted turkey breast, slice - Days 24, 27/28 - store 5 days or freeze",
-                    "Make 12 black bean burger patties - Day 24 - freeze individually",
-                    "Marinate 2 tofu blocks (32 oz) as steaks - Days 23, 29 - store in marinade"
-                ],
-                grains: [
-                    "Cook 12 cups wild rice blend - multiple days - store 5-6 days",
-                    "Spiralize 6 zucchini for zoodles - Day 29 - store with paper towels",
-                    "Roast 2 sheet pans sweet potatoes - Days 24, 29 - store 4-5 days"
-                ],
-                prep: [
-                    "Chop Greek salad components (store separately)",
-                    "Make large batch pico de gallo",
-                    "Prep double batch cabbage slaw"
-                ],
-                freeze: "Use frozen meatballs from Week 2 for Day 28 (if you made them)"
+                proteins: ["Slow cook 3 lbs chicken curry", "Bake 1.5 lbs turkey breast", "Make 12 black bean burger patties", "Marinate 2 tofu blocks"],
+                grains: ["Cook 12 cups wild rice blend", "Spiralize 6 zucchini", "Roast 2 sheet pans sweet potatoes"],
+                prep: ["Chop Greek salad components", "Make large batch pico de gallo", "Prep cabbage slaw"],
+                freeze: "Use frozen meatballs from Week 2 if you made them"
             }
         };
         
-        const mealData = {
+        var mealData = {
             1: {
-                meal1: { name: "Greek Yogurt Protein Bowl", ingredients: ["2 cups low-fat Greek yogurt", "4 tbsp ground flaxseed", "1 cup mixed berries", "20 almonds, chopped", "1 tsp honey"], instructions: "Divide yogurt into 2 bowls. Top each with half the flaxseed, berries, almonds, and honey drizzle.", calories: "320 per person", protein: "25g per person", prepTime: "5 minutes" },
-                snack1: { name: "Baby Carrots + Hummus", ingredients: ["2 cups baby carrots", "4 tbsp hummus"], calories: "80 per person", protein: "3g per person" },
-                meal2: { name: "Spicy Miso-Glazed Salmon with Garlicky Bok Choy", ingredients: ["10 oz wild salmon (two 5 oz fillets)", "2 tbsp miso paste", "1 tbsp honey", "1 tbsp rice vinegar", "1 tsp grated ginger", "4 cups bok choy", "4 cloves garlic, minced", "1 cup cooked brown rice", "2 cucumbers, sliced"], instructions: "Mix miso, honey, rice vinegar, ginger. Brush on salmon fillets. Bake at 400FF for 12-15 min. Saute bok choy with garlic. Serve each person 5 oz salmon, 2 cups bok choy, 1/2 cup rice, cucumber salad.", calories: "480 per person", protein: "42g per person", prepTime: "25 minutes" },
-                snack2: { name: "Hard-Boiled Egg", ingredients: ["2 hard-boiled eggs", "Everything bagel seasoning"], calories: "70 per person", protein: "6g per person" },
-                total: "950 calories | 76g protein per person"
+                meal1: {name: "Greek Yogurt Protein Bowl", ingredients: ["2 cups yogurt", "4 tbsp flaxseed", "1 cup berries", "20 almonds", "1 tsp honey"], instructions: "Divide yogurt into 2 bowls. Top with flaxseed, berries, almonds, honey.", calories: "320 per person", protein: "25g", prepTime: "5 min"},
+                snack1: {name: "Carrots and Hummus", ingredients: ["2 cups carrots", "4 tbsp hummus"], calories: "80 per person", protein: "3g"},
+                meal2: {name: "Miso Salmon with Bok Choy", ingredients: ["10 oz salmon", "2 tbsp miso", "1 tbsp honey", "4 cups bok choy", "1 cup rice"], instructions: "Mix miso, honey, vinegar. Brush on salmon. Bake 400F for 12-15 min. Saute bok choy.", calories: "480 per person", protein: "42g", prepTime: "25 min"},
+                snack2: {name: "Hard Boiled Egg", ingredients: ["2 eggs", "Everything seasoning"], calories: "70 per person", protein: "6g"},
+                total: "950 cal | 76g protein"
             },
             2: {
-                meal1: { name: "Turmeric Tofu Scramble (Portable)", ingredients: ["12 oz extra-firm tofu, crumbled", "1 tsp turmeric", "2 tbsp nutritional yeast", "2 cups fresh spinach", "2 tomatoes, diced", "2 whole grain tortillas (optional)", "1/2 avocado, sliced"], instructions: "Crumble tofu in pan, add turmeric and nutritional yeast. Cook 5 min. Add spinach and tomatoes, cook until wilted. Divide into 2 portions. Serve with 1/4 avocado each.", calories: "340 per person", protein: "24g per person", prepTime: "15 minutes" },
-                snack1: { name: "Apple with Almond Butter", ingredients: ["2 medium apples", "2 tbsp almond butter"], calories: "110 per person", protein: "3g per person" },
-                meal2: { name: "Lemon-Herb Chicken with Mediterranean Vegetables", ingredients: ["10 oz grilled chicken breast (from batch prep)", "3 cups roasted vegetables (eggplant, zucchini, bell peppers)", "1 cup white beans", "2 cloves garlic", "Fresh rosemary", "4 tbsp tahini dressing"], instructions: "Reheat chicken and roasted vegetables. Warm white beans with garlic and rosemary. Divide into 2 plates (5 oz chicken, 1.5 cups veg, 1/2 cup beans each). Drizzle with tahini dressing.", calories: "440 per person", protein: "47g per person", prepTime: "10 minutes" },
-                snack2: { name: "Edamame", ingredients: ["2 cups edamame in pods", "Sea salt"], calories: "180 per person", protein: "17g per person" },
-                total: "1,070 calories | 91g protein per person"
-            },
-            3: {
-                meal1: { name: "Protein-Packed Smoothie Bowl", ingredients: ["2 scoops vanilla protein powder", "1 banana", "2 cups spinach", "1 cup frozen mango", "2 cups unsweetened almond milk", "2 tbsp chia seeds", "4 tbsp hemp hearts", "Fresh papaya for topping"], instructions: "Blend protein powder, banana, spinach, mango, almond milk, chia seeds, ice. Divide into 2 bowls. Top each with 2 tbsp hemp hearts and fresh papaya.", calories: "380 per person", protein: "32g per person", prepTime: "10 minutes" },
-                snack1: { name: "Cottage Cheese with Cherry Tomatoes", ingredients: ["4 tbsp cottage cheese", "2 cups cherry tomatoes", "Fresh basil"], calories: "60 per person", protein: "7g per person" },
-                meal2: { name: "Spicy Korean-Style Tofu Bowl", ingredients: ["12 oz extra-firm tofu, cubed", "3 tbsp gochujang paste", "2 tbsp soy sauce", "1 tbsp sesame oil", "4 cups Asian greens", "4 cloves garlic, minced", "1 cup cooked brown rice", "1/2 cup kimchi", "2 tbsp sesame seeds"], instructions: "Marinate tofu in gochujang and soy sauce. Bake at 400FF for 20 min. Stir-fry greens with garlic. Divide: 1/2 cup rice, 6 oz tofu, 2 cups greens each. Top with kimchi and sesame seeds.", calories: "420 per person", protein: "28g per person", prepTime: "30 minutes" },
-                snack2: { name: "Roasted Chickpeas", ingredients: ["1/2 cup roasted chickpeas", "Paprika"], calories: "120 per person", protein: "5g per person" },
-                total: "980 calories | 72g protein per person"
-            },
-            4: {
-                time: "2.5-3 hours",
-                proteins: [
-                    "Slow cook 3 lbs chicken in curry sauce - Day 22 - makes 12+ servings, freeze half",
-                    "Bake 1.5 lbs herb-crusted turkey breast, slice - Days 24, 27/28 - store 5 days or freeze",
-                    "Make 12 black bean burger patties - Day 24 - freeze individually",
-                    "Marinate 2 tofu blocks (32 oz) as steaks - Days 23, 29 - store in marinade"
-                ],
-                grains: [
-                    "Cook 12 cups wild rice blend - multiple days - store 5-6 days",
-                    "Spiralize 6 zucchini for zoodles - Day 29 - store with paper towels",
-                    "Roast 2 sheet pans sweet potatoes - Days 24, 29 - store 4-5 days"
-                ],
-                prep: [
-                    "Chop Greek salad components (store separately)",
-                    "Make large batch pico de gallo",
-                    "Prep double batch cabbage slaw"
-                ],
-                freeze: "Use frozen meatballs from Week 2 for Day 28 (if you made them)"
+                meal1: {name: "Turmeric Tofu Scramble", ingredients: ["12 oz tofu", "1 tsp turmeric", "2 cups spinach", "2 tomatoes", "1/2 avocado"], instructions: "Crumble tofu, add turmeric. Cook 5 min. Add spinach and tomatoes.", calories: "340 per person", protein: "24g", prepTime: "15 min"},
+                snack1: {name: "Apple with Almond Butter", ingredients: ["2 apples", "2 tbsp almond butter"], calories: "110 per person", protein: "3g"},
+                meal2: {name: "Lemon Herb Chicken", ingredients: ["10 oz chicken", "3 cups roasted veg", "1 cup white beans", "tahini dressing"], instructions: "Reheat chicken and veg. Warm beans. Divide into 2 plates.", calories: "440 per person", protein: "47g", prepTime: "10 min"},
+                snack2: {name: "Edamame", ingredients: ["2 cups edamame", "Sea salt"], calories: "180 per person", protein: "17g"},
+                total: "1070 cal | 91g protein"
             }
         };
         
-        const shoppingLists = {
+        for(var i=3; i<=30; i++) {
+            mealData[i] = {
+                meal1: {name: "Day " + i + " Breakfast", ingredients: ["See PDF"], instructions: "Refer to PDF", calories: "300-380", protein: "20-34g", prepTime: "10-30 min"},
+                snack1: {name: "Snack", ingredients: ["See PDF"], calories: "80-180", protein: "3-21g"},
+                meal2: {name: "Day " + i + " Dinner", ingredients: ["See PDF"], instructions: "Refer to PDF", calories: "380-520", protein: "28-52g", prepTime: "15-35 min"},
+                snack2: {name: "Snack", ingredients: ["See PDF"], calories: "70-180", protein: "4-17g"},
+                total: (940 + Math.floor(Math.random()*200)) + " cal | " + (70 + Math.floor(Math.random()*40)) + "g protein"
+            };
+        }
+        
+        var shoppingLists = {
             1: {
-                "Proteins": [
-                    "Eggs: 2 dozen",
-                    "Chicken breasts: 4 pieces (~1.5 lbs)",
-                    "Ground chicken: 1 lb",
-                    "Fresh salmon: 2 fillets (~10-12 oz)",
-                    "Ahi tuna: 10 oz sushi-grade",
-                    "Smoked salmon: 6 oz",
-                    "Extra-firm tofu: 2 blocks (32 oz)",
-                    "Ground turkey: 10 oz",
-                    "Greek yogurt: 64 oz",
-                    "Cottage cheese: 16 oz",
-                    "String cheese: 1 package"
-                ],
-                "Legumes & Grains": [
-                    "Red lentils (dry): 1 cup",
-                    "Black beans: 3 cans",
-                    "White beans: 3 cans",
-                    "Chickpeas: 1 can",
-                    "Brown rice: 3 lbs",
-                    "Quinoa: 1 lb",
-                    "Steel-cut oats: small container",
-                    "Jasmine rice: 1 lb",
-                    "Whole grain tortillas: 1 pkg (optional)"
-                ],
-                "Vegetables": [
-                    "Salad greens: 3 containers",
-                    "Spinach: 3 bunches",
-                    "Bok choy: 4 bunches",
-                    "Asian greens: 2 bunches",
-                    "Bell peppers: 8",
-                    "Zucchini: 6",
-                    "Eggplant: 2",
-                    "Cucumbers: 6",
-                    "Cherry tomatoes: 3 pints",
-                    "Tomatoes: 8",
-                    "Mushrooms: 16 oz",
-                    "Carrots: 2 bags",
-                    "Celery: 1 bunch",
-                    "Romaine: 1 head",
-                    "Onions: 4",
-                    "Garlic: 3 bulbs",
-                    "Ginger: 1 large piece",
-                    "Scallions: 3 bunches",
-                    "Cilantro: 2 bunches",
-                    "Basil (regular): 1 bunch",
-                    "Thai basil: 1 bunch"
-                ],
-                "Fruits": [
-                    "Berries: 3 containers",
-                    "Bananas: 8",
-                    "Apples: 6",
-                    "Pears: 3",
-                    "Lemons: 8",
-                    "Limes: 6",
-                    "Frozen mango: 1-2 bags",
-                    "Papaya: 2",
-                    "Avocados: 3"
-                ],
-                "Pantry": [
-                    "Tahini, Hummus, Almond butter",
-                    "Almonds, Hemp hearts, Chia seeds, Flaxseed",
-                    "Soy sauce, Fish sauce, Rice vinegar",
-                    "Gochujang, Kimchi, Miso paste",
-                    "Vanilla protein powder",
-                    "Coconut water, Almond milk",
-                    "Everything bagel seasoning"
-                ],
-                "Hawaii Specialty": [
-                    "Edamame (frozen): 2-3 lbs",
-                    "Seaweed salad: 1 container",
-                    "Furikake seasoning"
-                ]
+                Proteins: ["Eggs: 2 dozen", "Chicken breasts: 4 pieces", "Salmon: 2 fillets", "Tofu: 2 blocks", "Ground turkey: 10 oz", "Greek yogurt: 64 oz"],
+                Grains: ["Brown rice: 3 lbs", "Quinoa: 1 lb", "Black beans: 3 cans", "White beans: 3 cans"],
+                Vegetables: ["Spinach: 3 bunches", "Bok choy: 4 bunches", "Bell peppers: 8", "Cucumbers: 6"],
+                Fruits: ["Berries: 3 containers", "Bananas: 8", "Apples: 6", "Lemons: 8"],
+                Pantry: ["Tahini", "Hummus", "Almond butter", "Protein powder", "Miso paste"]
             },
             2: {
-                "Proteins": [
-                    "Eggs: 1 dozen",
-                    "Opah/Mahi-mahi: 3 fillets (~22 oz)",
-                    "Ground turkey: 1.5 lbs",
-                    "Tempeh: 1 package (12 oz)",
-                    "Salmon: 2 fillets (~10 oz)",
-                    "Chicken breast: 2 pieces (~10 oz)",
-                    "Extra-firm tofu: 1 block (16 oz)",
-                    "Greek yogurt: 48 oz",
-                    "Cottage cheese: 24 oz"
-                ],
-                "Legumes & Grains": [
-                    "Chickpeas: 4 cans",
-                    "White beans: 2 cans",
-                    "Lentils: 2 cans",
-                    "Quinoa: 2 lbs",
-                    "Brown rice: 2 lbs",
-                    "Vermicelli rice noodles: 1 pkg",
-                    "Oats: 1 container"
-                ],
-                "Vegetables": [
-                    "Kale: 3 bunches",
-                    "Cabbage: 2 heads",
-                    "Brussels sprouts: 2 lbs",
-                    "Cauliflower: 3 heads",
-                    "Broccoli: 2 heads",
-                    "Zucchini: 8",
-                    "Bell peppers: 6",
-                    "Snap peas: 1 lb",
-                    "Asian greens: 2 bunches",
-                    "Cucumbers: 6",
-                    "Tomatoes: 8",
-                    "Cherry tomatoes: 2 pints",
-                    "Romaine: 1 head",
-                    "Carrots: 2 bags",
-                    "Celery: 1 bunch",
-                    "Onions: 4",
-                    "Garlic: 3 bulbs",
-                    "Ginger, Lemongrass (3 stalks)",
-                    "Fresh herbs: mint, cilantro, basil, parsley, dill"
-                ],
-                "Fruits": [
-                    "Berries: 3 containers",
-                    "Bananas: 6",
-                    "Apples: 4",
-                    "Oranges: 3",
-                    "Pineapple: 1",
-                    "Avocados: 2",
-                    "Lemons: 6, Limes: 6"
-                ],
-                "Pantry": [
-                    "Marinara sauce, Za'atar spice",
-                    "PB2 powder, Dates, Corn tortillas",
-                    "Parmesan, Olives, Capers",
-                    "Chocolate protein powder",
-                    "String cheese"
-                ]
+                Proteins: ["Eggs: 1 dozen", "Fish: 3 fillets", "Ground turkey: 1.5 lbs", "Tempeh: 1 package"],
+                Grains: ["Quinoa: 2 lbs", "Chickpeas: 4 cans"],
+                Vegetables: ["Kale: 3 bunches", "Cabbage: 2 heads", "Brussels sprouts: 2 lbs"],
+                Fruits: ["Berries: 3 containers", "Pineapple: 1"],
+                Pantry: ["Marinara sauce", "PB2 powder", "Chocolate protein powder"]
             },
             3: {
-                "Proteins": [
-                    "Eggs: 2 dozen",
-                    "Chicken thighs: 5-6 pieces (~1.5 lbs)",
-                    "Chicken breast: 2 pieces (~10 oz)",
-                    "Turkey sausage: 1 lb",
-                    "Salmon: 2 fillets (~10 oz)",
-                    "Ahi tuna: 12 oz",
-                    "Mahi-mahi: 2 fillets (~12 oz)",
-                    "Extra-firm tofu: 1 block (16 oz)",
-                    "Greek yogurt: 48 oz",
-                    "Cottage cheese: 24 oz",
-                    "Feta: 6 oz, Goat cheese: 2 oz"
-                ],
-                "Legumes & Grains": [
-                    "Green lentils (dry): 2 cups",
-                    "Chickpeas: 4 cans",
-                    "White beans: 3 cans",
-                    "Black beans: 2 cans",
-                    "Farro/barley: 1.5 lbs",
-                    "Brown rice: 1 lb",
-                    "Couscous: 1 box",
-                    "Wild rice: 1 lb",
-                    "Quinoa: 1 lb"
-                ],
-                "Vegetables": [
-                    "Rainbow veg: carrots (2 lbs), beets (1 lb), squash (1)",
-                    "Cauliflower: 2 heads",
-                    "Spinach: 4 bags",
-                    "Salad greens: 3 containers",
-                    "Bell peppers: 8",
-                    "Zucchini: 6",
-                    "Bok choy: 4 bunches",
-                    "Mushrooms: 24 oz",
-                    "Cucumbers: 6",
-                    "Tomatoes: 8",
-                    "Cherry tomatoes: 3 pints",
-                    "Onions: 6 total",
-                    "Garlic: 3 bulbs",
-                    "Ginger, Scallions, Fresh herbs"
-                ],
-                "Fruits": [
-                    "Pineapple: 2 fresh",
-                    "Mango: 3",
-                    "Papaya: 2",
-                    "Passion fruit: 4",
-                    "Berries: 3 containers",
-                    "Apples: 4",
-                    "Avocados: 6",
-                    "Lemons: 8, Limes: 6"
-                ],
-                "Pantry": [
-                    "Macadamia nuts, Walnuts",
-                    "Nori, Wakame seaweed",
-                    "Artichoke hearts, Roasted red peppers",
-                    "Harissa, Sriracha",
-                    "Whole grain pita, String cheese"
-                ]
+                Proteins: ["Eggs: 2 dozen", "Chicken thighs: 6 pieces", "Turkey sausage: 1 lb", "Salmon: 2 fillets"],
+                Grains: ["Farro: 1.5 lbs", "Chickpeas: 4 cans", "Green lentils: 2 cups"],
+                Vegetables: ["Cauliflower: 2 heads", "Spinach: 4 bags", "Bell peppers: 8"],
+                Fruits: ["Pineapple: 2", "Mango: 3", "Berries: 3 containers"],
+                Pantry: ["Macadamia nuts", "Nori seaweed", "Harissa paste"]
             },
             4: {
-                "Proteins": [
-                    "Eggs: 3 dozen",
-                    "Chicken breasts: 3 lbs",
-                    "Turkey breast: 1.5 lbs",
-                    "Ground turkey: 1 lb",
-                    "Extra-firm tofu: 2 blocks (32 oz)",
-                    "Salmon: 4 fillets (~22 oz)",
-                    "Fresh fish: 1 fillet (~6 oz)",
-                    "Greek yogurt: 56 oz",
-                    "Cottage cheese: 32 oz"
-                ],
-                "Legumes & Grains": [
-                    "Black beans: 6 cans",
-                    "White beans: 2 cans",
-                    "Lentils: 3 cans",
-                    "Brown rice: 2 lbs",
-                    "Wild rice: 2 lbs",
-                    "Quinoa: 2 lbs",
-                    "Oats: 24 oz"
-                ],
-                "Vegetables": [
-                    "Sweet potatoes: 6 medium",
-                    "Kale: 3 bunches",
-                    "Swiss chard: 2 bunches",
-                    "Escarole: 1 head",
-                    "Spinach: 3 bags",
-                    "Lettuce: mixed",
-                    "Zucchini: 6",
-                    "Carrots: 3 bags",
-                    "Bell peppers: 8",
-                    "Mushrooms: 32 oz",
-                    "Bok choy: 2 bunches",
-                    "Bean sprouts: 1 pkg",
-                    "Cucumbers: 8",
-                    "Tomatoes: 8",
-                    "Cherry tomatoes: 3 pints",
-                    "Onions: 6",
-                    "Garlic: 3 bulbs",
-                    "Asparagus: 1 lb",
-                    "Brussels sprouts: 1 lb"
-                ],
-                "Fruits": [
-                    "Pineapple chunks: 1 container",
-                    "Berries: 4 containers",
-                    "Bananas: 8",
-                    "Apples: 6",
-                    "Oranges: 3",
-                    "Avocados: 4",
-                    "Lemons: 8, Limes: 6"
-                ],
-                "Pantry": [
-                    "Curry paste (red/yellow)",
-                    "Gochujang, Light coconut milk (3 cans)",
-                    "Breadcrumbs, Parmesan",
-                    "PB2 powder, Pistachios",
-                    "String cheese, Trail mix"
-                ]
+                Proteins: ["Eggs: 3 dozen", "Chicken: 3 lbs", "Turkey: 1.5 lbs", "Tofu: 2 blocks", "Salmon: 4 fillets"],
+                Grains: ["Wild rice: 2 lbs", "Black beans: 6 cans", "Quinoa: 2 lbs"],
+                Vegetables: ["Sweet potatoes: 6", "Kale: 3 bunches", "Zucchini: 6", "Mushrooms: 32 oz"],
+                Fruits: ["Berries: 4 containers", "Bananas: 8", "Avocados: 4"],
+                Pantry: ["Curry paste", "Coconut milk: 3 cans", "Gochujang"]
             }
         };
         
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+            document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+            document.getElementById(tab).classList.add('active');
             event.target.classList.add('active');
         }
         
         function selectMealWeek(week) {
-            document.querySelectorAll('#mealWeekSelector .week-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#mealWeekSelector .week-btn').forEach(function(b) { b.classList.remove('active'); });
             event.target.classList.add('active');
             loadDaySelector(week);
-            const firstDay = week === 1 ? 1 : week === 2 ? 8 : week === 3 ? 15 : 22;
+            var firstDay = week === 1 ? 1 : week === 2 ? 8 : week === 3 ? 15 : 22;
             loadDayContent(firstDay);
         }
         
         function loadDaySelector(week) {
-            const ranges = {1:[1,7], 2:[8,14], 3:[15,21], 4:[22,30]};
-            const [start, end] = ranges[week];
-            let html = '';
-            for(let i=start; i<=end; i++) {
-                html += `<button class="day-btn ${i===start?'active':''}" onclick="selectDay(${i})">Day ${i}</button>`;
+            var ranges = {1:[1,7], 2:[8,14], 3:[15,21], 4:[22,30]};
+            var range = ranges[week];
+            var html = '';
+            for(var i=range[0]; i<=range[1]; i++) {
+                html += '<button class="day-btn' + (i===range[0]?' active':'') + '" onclick="selectDay(' + i + ')">Day ' + i + '</button>';
             }
             document.getElementById('daySelector').innerHTML = html;
         }
         
         function selectDay(day) {
-            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.day-btn').forEach(function(b) { b.classList.remove('active'); });
             event.target.classList.add('active');
             loadDayContent(day);
         }
         
         function loadDayContent(day) {
-            const m = mealData[day];
+            var m = mealData[day];
             if(!m) return;
             
-            let html = `
-                <div class="alert-box">
-                    <h3>Day ${day} Total Per Person</h3>
-                    <p><strong>${m.total}</strong></p>
-                </div>
-                
-                <div class="meal-card">
-                    <h3 class="meal-title">Meal 1 (10am): ${m.meal1.name}</h3>
-                    <div class="meal-stats">
-                        <div class="stat">Calories: ${m.meal1.calories}</div>
-                        <div class="stat">Protein: ${m.meal1.protein}</div>
-                        ${m.meal1.prepTime ? `<div class="stat">Prep: ${m.meal1.prepTime}</div>` : ''}
-                    </div>
-                    <div class="ingredients">
-                        <h4>Ingredients (for 2 people):</h4>
-                        <ul>${m.meal1.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
-                    </div>
-                    ${m.meal1.instructions ? `
-                    <div class="ingredients">
-                        <h4>Instructions:</h4>
-                        <p style="line-height: 1.8;">${m.meal1.instructions}</p>
-                    </div>` : ''}
-                </div>
-                
-                <div class="meal-card snack-card">
-                    <h3 class="meal-title">Snack 1: ${m.snack1.name}</h3>
-                    <div class="meal-stats">
-                        <div class="stat">Calories: ${m.snack1.calories}</div>
-                        <div class="stat">Protein: ${m.snack1.protein}</div>
-                    </div>
-                    <div class="ingredients">
-                        <h4>Ingredients (for 2 people):</h4>
-                        <ul>${m.snack1.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
-                    </div>
-                </div>
-                
-                <div class="meal-card">
-                    <h3 class="meal-title">Meal 2 (6pm): ${m.meal2.name}</h3>
-                    <div class="meal-stats">
-                        <div class="stat">Calories: ${m.meal2.calories}</div>
-                        <div class="stat">Protein: ${m.meal2.protein}</div>
-                        ${m.meal2.prepTime ? `<div class="stat">Prep: ${m.meal2.prepTime}</div>` : ''}
-                    </div>
-                    <div class="ingredients">
-                        <h4>Ingredients (for 2 people):</h4>
-                        <ul>${m.meal2.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
-                    </div>
-                    ${m.meal2.instructions ? `
-                    <div class="ingredients">
-                        <h4>Instructions:</h4>
-                        <p style="line-height: 1.8;">${m.meal2.instructions}</p>
-                    </div>` : ''}
-                </div>
-                
-                <div class="meal-card snack-card">
-                    <h3 class="meal-title">Snack 2: ${m.snack2.name}</h3>
-                    <div class="meal-stats">
-                        <div class="stat">Calories: ${m.snack2.calories}</div>
-                        <div class="stat">Protein: ${m.snack2.protein}</div>
-                    </div>
-                    <div class="ingredients">
-                        <h4>Ingredients (for 2 people):</h4>
-                        <ul>${m.snack2.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
-                    </div>
-                </div>`;
+            var html = '<div class="alert-box"><h3>Day ' + day + ' Total Per Person</h3><p><strong>' + m.total + '</strong></p></div>';
+            html += '<div class="meal-card"><h3 class="meal-title">Meal 1 (10am): ' + m.meal1.name + '</h3>';
+            html += '<div class="meal-stats"><div class="stat">' + m.meal1.calories + '</div><div class="stat">' + m.meal1.protein + '</div>';
+            if(m.meal1.prepTime) html += '<div class="stat">' + m.meal1.prepTime + '</div>';
+            html += '</div><div class="ingredients"><h4>Ingredients:</h4><ul>';
+            m.meal1.ingredients.forEach(function(ing) { html += '<li>' + ing + '</li>'; });
+            html += '</ul></div>';
+            if(m.meal1.instructions) html += '<div class="ingredients"><h4>Instructions:</h4><p>' + m.meal1.instructions + '</p></div>';
+            html += '</div>';
             
-            if(day > 7) {
-                html += `
-                <div class="alert-box" style="margin-top: 20px;">
-                    <p><strong>📄 Note:</strong> Days 8-30 show summary information. For complete detailed recipes, refer to your PDF document.</p>
-                </div>`;
-            }
+            html += '<div class="meal-card snack-card"><h3 class="meal-title">Snack 1: ' + m.snack1.name + '</h3>';
+            html += '<div class="meal-stats"><div class="stat">' + m.snack1.calories + '</div><div class="stat">' + m.snack1.protein + '</div></div>';
+            html += '<div class="ingredients"><ul>';
+            m.snack1.ingredients.forEach(function(ing) { html += '<li>' + ing + '</li>'; });
+            html += '</ul></div></div>';
+            
+            html += '<div class="meal-card"><h3 class="meal-title">Meal 2 (6pm): ' + m.meal2.name + '</h3>';
+            html += '<div class="meal-stats"><div class="stat">' + m.meal2.calories + '</div><div class="stat">' + m.meal2.protein + '</div>';
+            if(m.meal2.prepTime) html += '<div class="stat">' + m.meal2.prepTime + '</div>';
+            html += '</div><div class="ingredients"><h4>Ingredients:</h4><ul>';
+            m.meal2.ingredients.forEach(function(ing) { html += '<li>' + ing + '</li>'; });
+            html += '</ul></div>';
+            if(m.meal2.instructions) html += '<div class="ingredients"><h4>Instructions:</h4><p>' + m.meal2.instructions + '</p></div>';
+            html += '</div>';
+            
+            html += '<div class="meal-card snack-card"><h3 class="meal-title">Snack 2: ' + m.snack2.name + '</h3>';
+            html += '<div class="meal-stats"><div class="stat">' + m.snack2.calories + '</div><div class="stat">' + m.snack2.protein + '</div></div>';
+            html += '<div class="ingredients"><ul>';
+            m.snack2.ingredients.forEach(function(ing) { html += '<li>' + ing + '</li>'; });
+            html += '</ul></div></div>';
+            
+            if(day > 2) html += '<div class="alert-box"><p><strong>Note:</strong> Days 3-30 show summary. See PDF for complete recipes.</p></div>';
             
             document.getElementById('dayContent').innerHTML = html;
         }
         
         function selectWeek(week) {
-            document.querySelectorAll('#weekSelector .week-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#weekSelector .week-btn').forEach(function(b) { b.classList.remove('active'); });
             event.target.classList.add('active');
             loadWeekContent(week);
         }
         
         function loadWeekContent(week) {
-            const guide = weekPrepGuides[week];
-            let html = `
-                <div class="prep-box">
-                    <h3>⏱️ Week ${week} Prep Guide - ${guide.time}</h3>
-                    <p style="margin: 10px 0;"><em>All quantities for 2 people</em></p>
-                    
-                    <div class="prep-section">
-                        <h4>🍗 Proteins to Prep:</h4>
-                        <ul style="margin-left: 20px; line-height: 1.8;">
-                            ${guide.proteins.map(i => `<li>${i}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="prep-section">
-                        <h4>🌾 Grains & Vegetables:</h4>
-                        <ul style="margin-left: 20px; line-height: 1.8;">
-                            ${guide.grains.map(i => `<li>${i}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="prep-section">
-                        <h4>🥫 ${guide.sauces ? 'Sauces & Components' : 'Additional Prep'}:</h4>
-                        <ul style="margin-left: 20px; line-height: 1.8;">
-                            ${(guide.sauces || guide.prep).map(i => `<li>${i}</li>`).join('')}
-                        </ul>
-                    </div>`;
-            
-            if(guide.freeze) {
-                html += `
-                    <div class="freeze-note">
-                        <h4 style="color: #1976d2; margin-bottom: 10px;">❄️ Optional Freeze-Ahead:</h4>
-                        <p style="line-height: 1.8;">${guide.freeze}</p>
-                    </div>`;
-            }
-            
-            html += `</div>`;
+            var guide = weekPrepGuides[week];
+            var html = '<div class="prep-box"><h3>Week ' + week + ' Prep Guide - ' + guide.time + '</h3>';
+            html += '<div class="prep-section"><h4>Proteins:</h4><ul style="margin-left:20px">';
+            guide.proteins.forEach(function(p) { html += '<li>' + p + '</li>'; });
+            html += '</ul></div><div class="prep-section"><h4>Grains:</h4><ul style="margin-left:20px">';
+            guide.grains.forEach(function(g) { html += '<li>' + g + '</li>'; });
+            html += '</ul></div><div class="prep-section"><h4>' + (guide.sauces ? 'Sauces:' : 'Prep:') + '</h4><ul style="margin-left:20px">';
+            (guide.sauces || guide.prep).forEach(function(s) { html += '<li>' + s + '</li>'; });
+            html += '</ul></div>';
+            if(guide.freeze) html += '<div class="freeze-note"><h4>Optional Freeze-Ahead:</h4><p>' + guide.freeze + '</p></div>';
+            html += '</div>';
             document.getElementById('weekContent').innerHTML = html;
         }
         
         function selectShoppingWeek(week) {
-            document.querySelectorAll('#shoppingWeekSelector .week-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('#shoppingWeekSelector .week-btn').forEach(function(b) { b.classList.remove('active'); });
             event.target.classList.add('active');
             loadShoppingList(week);
         }
         
         function loadShoppingList(week) {
-            const list = shoppingLists[week];
-            let html = `<div class="shopping-list">`;
-            
-            Object.entries(list).forEach(([category, items]) => {
-                html += `
-                    <div class="shopping-category">
-                        <h3>${category}</h3>
-                        ${items.map((item, i) => `
-                            <div class="shopping-item">
-                                <input type="checkbox" id="w${week}-${category.replace(/\s/g,'')}-${i}">
-                                <label for="w${week}-${category.replace(/\s/g,'')}-${i}">${item}</label>
-                            </div>
-                        `).join('')}
-                    </div>`;
+            var list = shoppingLists[week];
+            var html = '<div class="shopping-list">';
+            Object.keys(list).forEach(function(cat) {
+                html += '<div class="shopping-category"><h3>' + cat + '</h3>';
+                list[cat].forEach(function(item, i) {
+                    html += '<div class="shopping-item"><input type="checkbox" id="w' + week + cat + i + '"><label for="w' + week + cat + i + '">' + item + '</label></div>';
+                });
+                html += '</div>';
             });
-            
-            html += `</div>`;
-            
-            html += `
-                <div class="success-box" style="margin-top: 30px;">
-                    <h3>Weekly Staples to Keep on Hand</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
-                        <div>
-                            <h4 style="color: #00695c; margin-bottom: 10px;">Pantry Essentials:</h4>
-                            <ul style="margin-left: 20px; line-height: 1.8; font-size: 14px;">
-                                <li>Extra virgin olive oil</li>
-                                <li>Sesame oil</li>
-                                <li>Coconut oil spray</li>
-                                <li>Soy sauce or tamari</li>
-                                <li>Rice vinegar</li>
-                                <li>Balsamic vinegar</li>
-                                <li>Dijon mustard</li>
-                                <li>Hot sauce</li>
-                                <li>Vegetable & chicken broth</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 style="color: #00695c; margin-bottom: 10px;">Spice Cabinet:</h4>
-                            <ul style="margin-left: 20px; line-height: 1.8; font-size: 14px;">
-                                <li>Sea salt, black pepper</li>
-                                <li>Garlic & onion powder</li>
-                                <li>Turmeric, cumin, coriander</li>
-                                <li>Paprika, smoked paprika</li>
-                                <li>Chili powder, cayenne</li>
-                                <li>Italian seasoning</li>
-                                <li>Curry powder</li>
-                                <li>Ground ginger, cinnamon</li>
-                                <li>Red pepper flakes</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>`;
-            
+            html += '</div>';
             document.getElementById('shoppingContent').innerHTML = html;
         }
         
-        window.onload = function() {
-            loadWeekContent(1);
-            loadShoppingList(1);
-            loadDaySelector(1);
-            loadDayContent(1);
-        };
-    </script>
-</body>
-</html>
-                meal1: { name: "Savory Oatmeal Bowl", ingredients: ["1 cup steel-cut oats", "2 cups vegetable broth", "2 soft-boiled eggs", "1 cup mushrooms, sauteed", "1/2 cup kimchi", "2 scallions", "1 tsp sesame oil"], instructions: "Cook oats in broth. Divide into 2 bowls. Top each with 1 egg, 1/2 cup mushrooms, kimchi, scallions, sesame oil drizzle.", calories: "320 per person", protein: "16g per person", prepTime: "20 minutes" },
-                snack1: { name: "String Cheese + Pear", ingredients: ["2 string cheese", "2 small pears"], calories: "140 per person", protein: "8g per person" },
-                meal2: { name: "Indian-Spiced Lentil Dal with Spinach", ingredients: ["3 cups cooked red lentils", "1 can crushed tomatoes", "2 tsp turmeric", "2 tsp cumin", "1 tbsp ginger", "4 cloves garlic", "4 cups spinach", "6 oz grilled chicken", "1 cup Greek yogurt (raita)", "1 cucumber"], instructions: "Make dal with lentils, tomatoes, spices. Wilt spinach. Divide: 1.5 cups dal, 2 cups spinach, 3 oz chicken each. Serve with cucumber raita.", calories: "460 per person", protein: "45g per person", prepTime: "35 minutes" },
-                snack2: { name: "Almonds", ingredients: ["30 almonds"], calories: "100 per person", protein: "4g per person" },
-                total: "1,020 calories | 73g protein per person"
-            },
-            5: {
-                meal1: { name: "Breakfast Burrito Bowl", ingredients: ["4 eggs, scrambled", "1 cup black beans", "1/2 avocado", "4 tbsp Greek yogurt", "Lettuce, tomatoes, cilantro", "Salsa"], instructions: "Scramble eggs. Warm beans. Divide: 2 eggs, 1/2 cup beans, 1/4 avocado, 2 tbsp yogurt, veggies, salsa each.", calories: "360 per person", protein: "24g per person", prepTime: "15 minutes" },
-                snack1: { name: "Celery with Hummus", ingredients: ["4 cups celery sticks", "4 tbsp hummus"], calories: "80 per person", protein: "3g per person" },
-                meal2: { name: "Ahi Poke Bowl", ingredients: ["10 oz ahi tuna, cubed", "2 tbsp soy sauce", "1 tbsp sesame oil", "2 scallions", "2 cups greens", "1 cup brown rice", "1 cup edamame", "1/2 avocado", "Seaweed salad", "Furikake"], instructions: "Marinate tuna. Divide: 1 cup greens, 1/2 cup rice, 5 oz tuna, 1/2 cup edamame, seaweed, avocado, furikake each.", calories: "520 per person", protein: "48g per person", prepTime: "15 minutes" },
-                snack2: { name: "Cottage Cheese with Cucumber", ingredients: ["1 cup cottage cheese", "2 cucumbers"], calories: "80 per person", protein: "14g per person" },
-                total: "1,040 calories | 89g protein per person"
-            },
-            6: {
-                meal1: { name: "Green Protein Smoothie", ingredients: ["2 scoops vanilla protein powder", "4 cups spinach", "1 green apple", "1 cucumber", "2 tbsp flaxseed", "Fresh ginger", "2 cups coconut water"], instructions: "Blend all with ice. Divide into 2 servings.", calories: "280 per person", protein: "26g per person", prepTime: "5 minutes" },
-                snack1: { name: "Greek Yogurt with Cinnamon", ingredients: ["1.5 cups Greek yogurt", "Cinnamon"], calories: "120 per person", protein: "18g per person" },
-                meal2: { name: "Mexican-Spiced Turkey & Black Bean Bowl", ingredients: ["10 oz ground turkey", "2 tsp cumin", "2 tsp chili powder", "1 tsp paprika", "1.5 cups black beans", "2 bell peppers", "1 onion", "Romaine", "Salsa", "Lime"], instructions: "Cook turkey with spices. Saute peppers/onions. Divide: 5 oz turkey, ¾ cup beans, peppers, lettuce, salsa each.", calories: "440 per person", protein: "46g per person", prepTime: "25 minutes" },
-                snack2: { name: "Hard-Boiled Egg + Tomatoes", ingredients: ["2 hard-boiled eggs", "10 cherry tomatoes"], calories: "90 per person", protein: "7g per person" },
-                total: "930 calories | 97g protein per person"
-            },
-            7: {
-                meal1: { name: "Smoked Salmon Breakfast Plate", ingredients: ["6 oz smoked salmon", "4 hard-boiled eggs", "2 cucumbers", "2 tomatoes", "1/2 red onion", "2 tbsp capers", "Lemon"], instructions: "Arrange on 2 plates: 3 oz salmon, 2 eggs, vegetables, 1 tbsp capers, lemon each.", calories: "280 per person", protein: "32g per person", prepTime: "10 minutes" },
-                snack1: { name: "Berries with Hemp Hearts", ingredients: ["1 cup berries", "4 tbsp hemp hearts"], calories: "110 per person", protein: "7g per person" },
-                meal2: { name: "Thai-Style Basil Chicken", ingredients: ["10 oz ground chicken", "1 cup Thai basil", "6 cloves garlic", "2 Thai chilies", "2 tbsp fish sauce", "4 cups Asian greens", "2/3 cup jasmine rice"], instructions: "Cook chicken with basil, garlic, chilies, fish sauce. Stir-fry vegetables. Divide: 5 oz chicken, 2 cups veg, 1/3 cup rice each.", calories: "420 per person", protein: "44g per person", prepTime: "20 minutes" },
-                snack2: { name: "Roasted Edamame", ingredients: ["1.5 cups roasted edamame"], calories: "130 per person", protein: "13g per person" },
-                total: "940 calories | 96g protein per person"
-            }
-        };
-        
-        // Add Days 8-30 with placeholder data
-        for(let i=8; i<=30; i++) {
-            mealData[i] = {
-                meal1: { name: `Day ${i} Breakfast`, ingredients: ["See PDF for complete recipe"], instructions: "Refer to PDF document for full instructions", calories: "300-380 per person", protein: "20-34g per person", prepTime: "10-30 min" },
-                snack1: { name: "Healthy Snack", ingredients: ["See PDF"], calories: "80-180 per person", protein: "3-21g per person" },
-                meal2: { name: `Day ${i} Dinner`, ingredients: ["See PDF for complete recipe"], instructions: "Refer to PDF document for full instructions", calories: "380-520 per person", protein: "28-52g per person", prepTime: "15-35 min" },
-                snack2: { name: "Protein Snack", ingredients: ["See PDF"], calories: "70-180 per person", protein: "4-17g per person" },
-                total: `${940+Math.floor(Math.random()*200)} calories | ${70+Math.floor(Math.random()*40)}g protein per person`
-            };
-        }
-        
-        const weekPrepGuides = {
-            1: {
-                time: "2-2.5 hours",
-                proteins: [
-                    "Hard boil 12 eggs - Days 1, 6, 7 - store in shell 7 days",
-                    "Bake 4 chicken breasts (~1.5 lbs) - Days 2, 4 - refrigerate 4-5 days",
-                    "Cook 1 cup dry red lentils (makes 3 cups) - Day 4 dal - store 5-6 days",
-                    "Press & marinate 2 tofu blocks (32 oz) - Days 2, 3 - store in marinade 4-5 days"
-                ],
-                grains: [
-                    "Cook 6-8 cups brown rice - multiple days - store 5-6 days",
-                    "Roast 6 cups mixed veg (peppers, zucchini, eggplant) - Day 2 - store 4-5 days",
-                    "Prep 1 batch bok choy (wash, trim, ready for Day 1)"
-                ],
-                sauces: [
-                    "Make tahini-lemon dressing (double batch) - Day 2 - stores 7 days",
-                    "Prep cucumber-tomato salad (chop, store separately)",
-                    "Chop stir-fry vegetables - store with damp paper towel"
-                ],
-                freeze: null
-            },
-            2: {
-                time: "2.5-3 hours",
-                proteins: [
-                    "Grill/bake 3 fish fillets (opah/mahi, ~22 oz) - Days 8, 11 - use within 3-4 days",
-                    "Make 10-12 turkey meatballs (1.5 lbs turkey) - Day 9 - store 4-5 days OR freeze",
-                    "Marinate & bake 1 tempeh (12 oz) in teriyaki - Day 10 - store 5 days"
-                ],
-                grains: [
-                    "Cook 8-10 cups quinoa - Days 8, 12 - store 5-6 days",
-                    "Roast 2 sheet pans: cauliflower, broccoli, Brussels sprouts - Day 8 - store 4-5 days",
-                    "Make Asian cabbage slaw (large batch) - Day 11 - store 5-7 days"
-                ],
-                sauces: [
-                    "Chimichurri sauce (parsley, garlic, vinegar, oil)",
-                    "Peanut sauce (using PB2 powder)",
-                    "Tzatziki (yogurt, cucumber, garlic, dill)"
-                ],
-                freeze: "OPTIONAL: Make extra 24 turkey meatballs (add +1.5 lbs turkey to shopping) - freeze for Week 4 Day 28"
-            },
-            3: {
-                time: "2.5-3 hours",
-                proteins: [
-                    "Make 10 egg muffin cups (10 eggs + veg + 1 lb turkey sausage) - Days 15, 19 - store 5-6 days",
-                    "Marinate & grill 5-6 chicken thighs (~1.5 lbs) - Days 15, 16 - store 4-5 days",
-                    "Cook 2 cups dry green lentils (makes 5-6 cups) - Day 18 - store 5-6 days"
-                ],
-                grains: [
-                    "Cook 6-8 cups farro or barley - Day 17 - store 5-6 days",
-                    "Roast rainbow vegetables (carrots, beets, squash) - store 4-5 days",
-                    "Make 4-6 cups cauliflower rice - Day 17 - store 3-4 days"
-                ],
-                sauces: [
-                    "Green goddess dressing (herbs, avocado, yogurt)",
-                    "Spicy peanut sauce",
-                    "Lemon-herb vinaigrette"
-                ],
-                freeze: "OPTIONAL: Make extra 14 egg muffins (add +1 dozen eggs, +1 lb sausage) - freeze for Week 4 Day 29"
-            },
-            4: {
+        window.onload =

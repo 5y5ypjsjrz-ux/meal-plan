@@ -797,59 +797,62 @@
         var weekPrepGuides = {
             1: {
                 time: "2.5-3 hours",
-                proteins: ["Hard boil 24 eggs", "Bake 12 chicken breasts with garlic, lemon, herbs", "Cook 6 cups dry lentils (makes ~15 cups cooked)", "Press and cube 4 blocks tofu, marinate in soy-ginger"],
-                grains: ["Cook 12 cups brown rice or quinoa", "Prep 8 cups roasted vegetables (bell peppers, zucchini, eggplant, bok choy)"],
-                sauces: ["Make tahini-lemon dressing (double batch)", "Prep cucumber-tomato salad (large batch)", "Chop vegetables for stir-fries"]
+                proteins: ["Hard boil 14 eggs (for snacks Days 1,4,7)", "Bake 10 oz grilled chicken (for Day 2 dinner)", "Cook 3 cups dry red lentils (for Day 4 dinner)", "Press and marinate 24 oz extra-firm tofu (for Days 2,3 lunches)"],
+                grains: ["Cook 3 cups brown rice (Days 1,3,5)", "Roast vegetables: 3 cups eggplant/zucchini/peppers (Day 2), 4 cups bok choy (Day 1), 8 cups Asian greens (Day 3)"],
+                sauces: ["Make tahini dressing for Day 2", "Prep cucumber salad for Day 1", "Mix gochujang marinade for Day 3 tofu"]
             },
             2: {
-                time: "2.5-3 hours",
-                proteins: ["Grill 6 pieces fresh opah or mahi-mahi (12 oz total)", "Make Italian turkey meatballs (36 count)", "Cook 6 cups chickpeas from dry", "Bake spiced tempeh cubes (4 packages)"],
-                grains: ["Cook 12 cups quinoa", "Roast 2 sheet pans: cauliflower, broccoli, Brussels sprouts", "Prep Asian-style slaw (large batch)"],
-                sauces: ["Chimichurri sauce (double batch)", "Peanut sauce with PB2 (double batch)", "Tzatziki (yogurt-cucumber, double batch)"]
+                time: "2.5 hours",
+                proteins: ["Bake/grill 20 oz white fish for Days 8-11 (ahi, opah, or mahi)", "Bake 20 oz chicken breasts/thighs for Days 9,12,14", "Hard boil 8 eggs for snacks"],
+                grains: ["Cook 3 cups brown rice or quinoa", "Cook 2 cups couscous (Day 12)", "Roast 6 cups mixed vegetables"],
+                prep: ["Make Greek yogurt portions", "Prep vegetables for omelets and bowls", "Batch roast chickpeas for snacks (2 cups)"]
             },
             3: {
-                time: "3-3.5 hours",
-                proteins: ["Bake 12 salmon pieces with different marinades", "Cook 6 cups green lentils", "Marinate and grill 16 chicken thighs", "Prep egg muffins (24 count: eggs, vegetables, turkey sausage)"],
-                grains: ["Cook 8 cups farro or barley", "Roast rainbow vegetables (carrots, beets, squash)", "Make 8 cups cauliflower rice"],
-                sauces: ["Green goddess dressing (double batch)", "Spicy peanut sauce (double batch)", "Lemon-herb vinaigrette (double batch)"]
+                time: "3 hours",
+                proteins: ["Bake 12 egg muffins with turkey sausage and vegetables (Days 15,19,21)", "Bake 30 oz salmon fillets (Days 14,18,21)", "Grill 20 oz chicken thighs (Days 16,19)", "Hard boil 10 eggs"],
+                grains: ["Cook 2 cups farro (Day 17)", "Cook 3 cups brown rice", "Make 4 cups cauliflower rice (Day 17)", "Cook 2 cups green lentils (Day 18)"],
+                sauces: ["Prepare teriyaki glaze for chicken", "Mix tahini dressing", "Make mango salsa components (Day 21)"]
             },
             4: {
-                time: "2.5-3 hours",
-                proteins: ["Slow cook 4 lbs chicken for curry", "Bake 4 lbs herb-crusted turkey breast", "Make black bean burgers (12 patties)", "Marinate tofu steaks (4 blocks)"],
-                grains: ["Cook 12 cups wild rice blend", "Prep spiralized vegetables (zucchini, carrots)", "Roast 2 sheet pans sweet potatoes with herbs"],
-                prep: ["Greek salad components (chop and store separately)", "Pico de gallo (large batch)", "Cabbage slaw (double batch)"]
+                time: "2.5 hours",
+                proteins: ["Slow cook 20 oz chicken for curry (Day 22)", "Bake 12 oz salmon (Days 25,30)", "Make 4 black bean burgers (Day 24)", "Bake 6 egg cups (Day 29)", "Hard boil 12 eggs"],
+                grains: ["Cook 6 cups brown rice", "Cook 2 cups quinoa (Days 25,26)", "Cook 1 cup wild rice (Day 30)", "Spiralize 8 zucchini for zoodles (Day 29)"],
+                prep: ["Roast sweet potatoes for Days 24,29", "Prep vegetables for omelets and bowls", "Make Greek salad components (Day 25)"]
             }
         };
         
         var shoppingLists = {
             1: {
-                Proteins: ["Eggs: 4 dozen", "Chicken breasts: 12 (~4 lbs)", "Salmon: 6 fillets (~30 oz)", "Tofu: 4 blocks", "Greek yogurt: 64 oz", "Cottage cheese: 32 oz", "String cheese: 2 packages", "Ground turkey: 2 lbs", "Smoked salmon: 12 oz"],
-                "Legumes & Grains": ["Lentils (red & brown): 6 cups dry", "Black beans: 4 cans", "White beans: 4 cans", "Chickpeas: 2 cans", "Brown rice: 4 lbs", "Quinoa: 2 lbs", "Steel-cut oats: 2 containers", "Whole grain tortillas: 2 packages"],
-                Vegetables: ["Mixed greens: 4 containers", "Spinach: 4 bunches", "Bok choy: 6 bunches", "Bell peppers: 12", "Zucchini: 8", "Eggplant: 4", "Cucumbers: 8", "Cherry tomatoes: 4 pints", "Mushrooms: 32 oz", "Garlic: 4 bulbs", "Ginger: large piece"],
-                Fruits: ["Berries: 4 containers", "Bananas: 12", "Apples: 8", "Lemons: 12", "Limes: 8", "Mango (frozen): 2 bags", "Papaya: 2"],
-                Pantry: ["Tahini: 16 oz", "Hummus: 32 oz", "Almond butter: 16 oz", "Almonds: 2 lbs", "Hemp hearts: 16 oz", "Chia seeds: 16 oz", "Flaxseed: 24 oz", "Nutritional yeast: 8 oz", "Soy sauce: 16 oz", "Miso paste: 16 oz", "Protein powder: 2 lbs"],
-                "Hawaii Items": ["Edamame: 4 lbs", "Ahi tuna: 10 oz", "Seaweed salad: 2 containers", "Furikake seasoning"]
+                Proteins: ["Eggs: 2 dozen", "Wild salmon: 10 oz (2 fillets)", "Chicken breast: 10 oz", "Extra-firm tofu: 24 oz (2 blocks)", "Greek yogurt: 32 oz (2 containers)", "Cottage cheese: 16 oz"],
+                "Legumes & Grains": ["Red lentils: 3 cups dry", "White beans: 1 can", "Brown rice: 2 lbs", "Steel-cut oats: 1 container", "Whole grain tortillas: 1 small package"],
+                Vegetables: ["Bok choy: 4 bunches", "Asian greens (choy sum/gai lan): 4 bunches", "Spinach: 2 bunches", "Bell peppers: 4", "Zucchini: 4", "Eggplant: 2", "Cucumbers: 4", "Cherry tomatoes: 2 pints", "Tomatoes: 4 medium", "Mushrooms: 16 oz", "Onions: 3", "Garlic: 2 bulbs", "Ginger: 1 piece", "Baby carrots: 2 bags"],
+                Fruits: ["Mixed berries: 2 containers", "Bananas: 3", "Apples: 4", "Lemons: 4", "Frozen mango: 1 bag", "Papaya: 1", "Avocado: 1"],
+                Pantry: ["Miso paste: 8 oz", "Gochujang: 8 oz", "Tahini: 8 oz", "Hummus: 16 oz", "Almond butter: 8 oz", "Almonds: 8 oz", "Hemp hearts: 8 oz", "Chia seeds: 8 oz", "Ground flaxseed: 12 oz", "Nutritional yeast: 4 oz", "Soy sauce: small bottle", "Rice vinegar: small bottle", "Sesame oil: small bottle", "Vanilla protein powder: 1 lb", "Kimchi: 1 jar", "Sesame seeds: 4 oz", "Everything bagel seasoning"],
+                Snacks: ["Edamame (frozen): 2 lbs", "Chickpeas for roasting: 1 can"]
             },
             2: {
-                Proteins: ["Opah/Mahi-mahi: 6 fillets (~36 oz)", "Ground turkey: 3 lbs", "Tempeh: 4 packages", "Salmon: 4 fillets", "Eggs: 2 dozen", "Greek yogurt: 48 oz", "Cottage cheese: 32 oz"],
-                "Legumes & Grains": ["Chickpeas: 6 cups dry or 6 cans", "White beans: 4 cans", "Lentils: 4 cans", "Quinoa: 2 lbs", "Brown rice: 2 lbs", "Rice noodles: 2 packages"],
-                Vegetables: ["Kale: 4 bunches", "Cabbage: 2 heads", "Brussels sprouts: 2 lbs", "Cauliflower: 4 heads", "Broccoli: 4 heads", "Zucchini: 12", "Bell peppers: 8", "Snap peas: 2 lbs", "Asian greens mix"],
-                Fruits: ["Berries: 4 containers", "Bananas: 8", "Apples: 6", "Oranges: 4", "Lemons: 8", "Pineapple: 2"],
-                Pantry: ["Marinara sauce: 2 jars", "Za'atar: 4 oz", "PB2 powder: 16 oz", "Dates: 16 oz", "Chocolate protein: 2 lbs", "Parmesan: small block"]
+                Proteins: ["White fish (ahi/opah/mahi): 20 oz total", "Chicken breast or thighs: 20 oz", "Eggs: 3 dozen", "Greek yogurt: 24 oz", "Cottage cheese: 16 oz", "String cheese: 1 package"],
+                "Legumes & Grains": ["Chickpeas: 2 cans (for roasting)", "Brown rice: 1 lb", "Couscous: 1 box", "Potatoes: 4 medium"],
+                Vegetables: ["Mixed greens: 2 containers", "Bell peppers: 6", "Onions: 4", "Cucumbers: 4", "Tomatoes: 6", "Cabbage: 1 small head", "Corn tortillas: 1 package (6 count)", "Cherry tomatoes: 2 pints", "Celery: 1 bunch"],
+                Fruits: ["Apples: 4", "Pears: 4", "Oranges: 2", "Berries: 2 containers", "Bananas: 4"],
+                Pantry: ["Cajun seasoning", "Shawarma spice mix", "Protein powder: 1 lb", "Tzatziki or Greek yogurt for sauce", "Trail mix: 8 oz", "Almond butter: 4 oz"],
+                Snacks: ["Edamame (frozen): 1 lb"]
             },
             3: {
-                Proteins: ["Salmon: 12 fillets (~4 lbs)", "Chicken thighs: 16 (~4 lbs)", "Turkey sausage: 2 lbs", "Eggs: 4 dozen", "Greek yogurt: 48 oz", "Cottage cheese: 32 oz", "Feta: 8 oz"],
-                "Legumes & Grains": ["Green lentils: 6 cups dry", "Chickpeas: 6 cans", "White beans: 4 cans", "Black beans: 4 cans", "Farro: 2 lbs", "Couscous: 2 boxes", "Wild rice: 2 lbs"],
-                Vegetables: ["Rainbow vegetables (carrots, beets, squash)", "Cauliflower: 4 heads", "Cherry tomatoes: 4 pints", "Cucumbers: 8", "Spinach: 4 bags", "Bell peppers: 12", "Zucchini: 8", "Mushrooms: 32 oz"],
-                Fruits: ["Pineapple: 2 fresh", "Mango: 4", "Papaya: 2", "Passion fruit: 6", "Berries: 4 containers", "Avocados: 8", "Lemons: 12"],
-                Pantry: ["Macadamia nuts: 8 oz", "Nori sheets", "Wakame: 4 oz", "Artichoke hearts: 2 jars", "Harissa: 8 oz", "Walnuts: 16 oz"]
+                Proteins: ["Salmon: 30 oz (3 large fillets)", "Chicken thighs: 20 oz", "Ahi tuna: 10 oz", "Turkey sausage: 1 lb", "Eggs: 3 dozen", "Greek yogurt: 32 oz", "Cottage cheese: 16 oz", "String cheese: 1 package", "Smoked salmon: 4 oz"],
+                "Legumes & Grains": ["Green lentils: 2 cups dry", "Chickpeas: 2 cans", "Black beans: 1 can", "Farro: 1 lb", "Brown rice: 1 lb", "Quinoa: 1 lb", "Rolled oats: 1 container", "Whole grain bread: 1 loaf"],
+                Vegetables: ["Spinach: 3 bags", "Mixed greens: 2 containers", "Cauliflower: 2 heads", "Bell peppers: 6", "Onions: 4", "Cucumbers: 6", "Tomatoes: 6", "Cherry tomatoes: 2 pints", "Feta cheese: 8 oz", "Olives: 1 jar", "Artichokes: 1 jar", "Avocados: 4", "Celery: 1 bunch", "Garlic: 2 bulbs"],
+                Fruits: ["Pineapple: 2 containers", "Mango: 2", "Berries: 3 containers", "Apples: 4", "Bananas: 4", "Lemons: 6"],
+                Pantry: ["Protein powder: 2 lbs", "Red curry paste", "Coconut milk: 1 can", "Teriyaki sauce/glaze", "Harissa paste", "Walnuts: 8 oz", "Trail mix: 8 oz", "Nori sheets", "Pickled ginger", "Capers", "Couscous: 1 box"],
+                Snacks: ["Edamame (frozen): 2 lbs", "Chickpeas for roasting: 2 cans"]
             },
             4: {
-                Proteins: ["Chicken breasts: 4 lbs", "Turkey breast: 4 lbs", "Tofu: 4 blocks", "Eggs: 4 dozen", "Greek yogurt: 64 oz", "Cottage cheese: 32 oz", "Salmon: 4 fillets", "Ahi/Mahi: 12 oz"],
-                "Legumes & Grains": ["Black beans: 6 cans", "White beans: 4 cans", "Lentils: 4 cans", "Brown rice: 2 lbs", "Wild rice: 2 lbs", "Quinoa: 2 lbs", "Oats: 32 oz"],
-                Vegetables: ["Sweet potatoes: 8", "Kale: 4 bunches", "Spinach: 4 bags", "Zucchini: 8 for spiralizing", "Carrots: 4 bags", "Bell peppers: 8", "Mushrooms: 48 oz", "Bok choy: 4 bunches"],
-                Fruits: ["Pineapple: 2 containers", "Mango: 2", "Berries: 4 containers", "Bananas: 8", "Apples: 6", "Avocados: 6"],
-                Pantry: ["Curry paste: red & yellow", "Gochujang: 8 oz", "Coconut milk: 4 cans", "Breadcrumbs: 16 oz", "String cheese: 2 packages", "Trail mix: 16 oz"]
+                Proteins: ["Chicken breasts: 20 oz", "Turkey breast: 10 oz", "Salmon: 22 oz (2 fillets)", "Tofu: 24 oz (2 blocks)", "Eggs: 3 dozen", "Greek yogurt: 32 oz", "Cottage cheese: 16 oz", "String cheese: 1 package", "Turkey for meatballs: 12 oz"],
+                "Legumes & Grains": ["Black beans: 4 cans", "Lentils: 2 cups dry", "Brown rice: 2 lbs", "Quinoa: 1 lb", "Wild rice: 1 lb", "Rolled oats: 1 container"],
+                Vegetables: ["Sweet potatoes: 4 large", "Kale: 2 bunches", "Spinach: 3 bags", "Zucchini: 8 (for spiralizing)", "Bell peppers: 8", "Mushrooms: 24 oz", "Onions: 4", "Cucumbers: 4", "Cherry tomatoes: 2 pints", "Lettuce: 1 head", "Celery: 1 bunch", "Carrots: 2 bags", "Garlic: 2 bulbs", "Avocados: 4"],
+                Fruits: ["Berries: 3 containers", "Bananas: 4", "Apples: 4", "Oranges: 2", "Pineapple: 1 container", "Green apples: 2", "Lemons: 6"],
+                Pantry: ["Curry paste (yellow): 1 jar", "Gochujang: small jar", "Coconut milk: 1 can", "PB2 powder: 8 oz", "Chocolate protein powder: 1 lb", "Vanilla protein powder: 1 lb", "Trail mix: 8 oz", "Almond butter: 8 oz", "Almonds: 8 oz", "Breadcrumbs: 8 oz (for black bean burgers)", "Thai basil sauce", "Peanuts: 4 oz", "Salsa: 1 jar", "Parmesan cheese: small block", "Escarole: 1 bunch"],
+                Snacks: ["Edamame (frozen): 2 lbs", "Chickpeas for roasting: 1 can"]
             }
         };
         

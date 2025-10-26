@@ -513,11 +513,33 @@
         const shoppingLists = {
             1: {
                 proteins: ["Eggs (4 dozen)", "Chicken breasts (12, ~4 lbs)", "Fresh salmon (6 fillets, ~30 oz)", "Extra-firm tofu (4 blocks)", "Greek yogurt (64 oz)", "Cottage cheese (32 oz)", "String cheese (2 packages)", "Ground turkey (2 lbs)", "Smoked salmon (12 oz)"],
-                vegetables: ["Mixed greens (4 containers)", "Spinach (4 bunches)", "Bok choy (6 bunches)", "Bell peppers (12)", "Zucchini (8)", "Cucumbers (8)", "Cherry tomatoes (4 pints)", "Garlic (4 bulbs)", "Ginger root", "Scallions (4 bunches)"],
-                fruits: ["Mixed berries (4 containers)", "Bananas (12)", "Apples (8)", "Lemons (12)", "Limes (8)", "Mango frozen (2 bags)", "Papaya (2)"],
-                pantry: ["Tahini", "Hummus (32 oz)", "Almond butter", "Almonds (2 lbs)", "Hemp hearts", "Chia seeds", "Flaxseed", "Protein powder (2 lbs)", "Soy sauce", "Rice vinegar", "Miso paste"]
+                legumes: ["Dry lentils (6 cups)", "Black beans (4 cans)", "White beans (4 cans)", "Chickpeas (2 cans)", "Brown rice (4 lbs)", "Quinoa (2 lbs)", "Steel-cut oats (2 containers)", "Whole grain tortillas (2 packages)"],
+                vegetables: ["Mixed greens (4 containers)", "Spinach (4 bunches)", "Bok choy (6 bunches)", "Bell peppers (12)", "Zucchini (8)", "Eggplant (4)", "Cucumbers (8)", "Cherry tomatoes (4 pints)", "Tomatoes (12)", "Mushrooms (32 oz)", "Carrots (2 bags)", "Celery (2 bunches)", "Onions (6)", "Garlic (4 bulbs)", "Ginger root", "Scallions (4 bunches)", "Cilantro (2 bunches)", "Basil (2 bunches)"],
+                fruits: ["Mixed berries (4 containers)", "Bananas (12)", "Apples (8)", "Pears (4)", "Lemons (12)", "Limes (8)", "Mango frozen (2 bags)", "Papaya (2)"],
+                pantry: ["Tahini (16 oz)", "Hummus (32 oz)", "Almond butter (16 oz)", "Almonds (2 lbs)", "Hemp hearts (16 oz)", "Chia seeds (16 oz)", "Flaxseed (24 oz)", "Sesame seeds", "Nutritional yeast", "Vanilla protein powder (2 lbs)", "Soy sauce", "Fish sauce", "Rice vinegar", "Gochujang paste", "Kimchi (2 jars)", "Miso paste", "Coconut water (2 cartons)", "Almond milk (128 oz)", "Everything bagel seasoning"],
+                hawaii: ["Edamame (4 lbs)", "Sushi-grade ahi tuna (10 oz)", "Seaweed salad (2 containers)", "Furikake seasoning"]
+            },
+            2: {
+                proteins: ["Fresh opah or mahi-mahi (6 fillets, ~36 oz)", "Ground turkey (3 lbs for meatballs)", "Tempeh (4 packages)", "Salmon (4 fillets)", "Eggs (2 dozen)", "Greek yogurt (48 oz)", "Cottage cheese (32 oz)"],
+                legumes: ["Chickpeas (6 cups dry or 6 cans)", "White beans (4 cans)", "Lentils (4 cans)", "Quinoa (2 lbs)", "Brown rice (2 lbs)", "Vermicelli rice noodles (2 packages)"],
+                vegetables: ["Kale (4 bunches)", "Cabbage (2 heads)", "Brussels sprouts (2 lbs)", "Cauliflower (4 heads)", "Broccoli (4 heads)", "Zucchini (12 for zoodles)", "Bell peppers (8)", "Snap peas (2 lbs)", "Cucumbers (8)", "Tomatoes (12)", "Cherry tomatoes (2 pints)", "Romaine lettuce (2 heads)", "Mixed Asian greens", "Carrots (2 bags)", "Onions (4)", "Garlic (4 bulbs)", "Ginger", "Lemongrass (6 stalks)", "Mint (2 bunches)", "Cilantro (4 bunches)", "Basil (4 bunches)", "Parsley (2 bunches)", "Dill (2 bunches)"],
+                fruits: ["Berries (4 containers)", "Bananas (8)", "Apples (6)", "Oranges (4)", "Lemons (8)", "Limes (8)", "Pineapple (2)"],
+                pantry: ["Marinara sauce (2 jars)", "Za'atar spice", "Coconut flakes", "PB2 powder (16 oz)", "Dates (16 oz)", "Oats (32 oz)", "Corn tortillas (2 packages)", "Whole grain crackers (2 boxes)", "Parmesan cheese", "Olives", "Capers", "Chocolate protein powder (2 lbs)", "Cocoa powder", "Pumpkin seeds"]
+            },
+            3: {
+                proteins: ["Salmon fillets (12, ~4 lbs)", "Chicken thighs (16, ~4 lbs)", "Turkey sausage (2 lbs)", "Eggs (4 dozen)", "Greek yogurt (48 oz)", "Cottage cheese (32 oz)", "Feta cheese (8 oz)", "Goat cheese (4 oz)"],
+                legumes: ["Green lentils (6 cups dry)", "Chickpeas (6 cans)", "White beans (4 cans)", "Black beans (4 cans)", "Farro or barley (2 lbs)", "Brown rice (2 lbs)", "Couscous (2 boxes)", "Wild rice blend (2 lbs)"],
+                vegetables: ["Rainbow vegetables (carrots, beets, squash)", "Cauliflower (4 heads)", "Cherry tomatoes (4 pints)", "Tomatoes (12)", "Cucumbers (8)", "Spinach (4 bags)", "Mixed greens (4 containers)", "Bell peppers (12)", "Zucchini (8)", "Asian vegetables (bok choy, Chinese broccoli)", "Mushrooms (32 oz)", "Red onions (4)", "Yellow onions (4)", "Garlic (4 bulbs)", "Ginger", "Scallions (4 bunches)", "Cilantro (4 bunches)", "Parsley (2 bunches)", "Basil (2 bunches)"],
+                fruits: ["Pineapple (2 fresh)", "Mango (4)", "Papaya (2)", "Passion fruit (6)", "Berries (4 containers)", "Apples (6)", "Avocados (8)", "Lemons (12)", "Limes (8)"],
+                pantry: ["Macadamia nuts", "Coconut flakes", "Nori seaweed sheets", "Wakame seaweed", "Artichoke hearts (2 jars)", "Roasted red peppers (2 jars)", "Harissa paste", "Sriracha", "Whole grain pita (2 packages)", "Walnuts", "Ground cinnamon"]
+            },
+            4: {
+                proteins: ["Chicken breasts (4 lbs)", "Turkey breast (4 lbs)", "Extra-firm tofu (4 blocks)", "Eggs (4 dozen)", "Greek yogurt (64 oz)", "Cottage cheese (32 oz)", "Salmon (4 fillets)", "Fresh ahi or mahi-mahi (2 fillets, 12 oz)"],
+                legumes: ["Black beans (6 cans)", "White beans (4 cans)", "Lentils (4 cans)", "Brown rice (2 lbs)", "Wild rice blend (2 lbs)", "Quinoa (2 lbs)", "Oats (32 oz)"],
+                vegetables: ["Sweet potatoes (8 medium)", "Kale (4 bunches)", "Swiss chard (2 bunches)", "Escarole (2 heads)", "Spinach (4 bags)", "Lettuce (romaine and mixed)", "Zucchini (8 for spiralizing)", "Carrots (4 bags)", "Bell peppers (8)", "Mushrooms (48 oz)", "Bok choy (4 bunches)", "Snap peas (2 lbs)", "Bean sprouts (2 packages)", "Cherry tomatoes (4 pints)", "Tomatoes (12)", "Cucumbers (8)", "Onions (8)", "Garlic (4 bulbs)", "Ginger", "Scallions (4 bunches)", "Cilantro (4 bunches)", "Mint (2 bunches)", "Basil (2 bunches)"],
+                fruits: ["Pineapple chunks (2 containers)", "Mango (2)", "Papaya (2)", "Berries (4 containers)", "Bananas (8)", "Apples (6)", "Oranges (4)", "Avocados (6)", "Lemons (12)", "Limes (8)"],
+                pantry: ["Curry paste (red and yellow)", "Gochujang", "Light coconut milk (4 cans)", "Breadcrumbs or panko", "Dried oregano", "Parmesan cheese", "String cheese (2 packages)", "Trail mix (16 oz)"]
             }
-            // Add more weeks as needed
         };
         
         let currentWeek = 1;

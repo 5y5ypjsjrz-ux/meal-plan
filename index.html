@@ -62,10 +62,10 @@
         </header>
         
         <div class="tabs">
-            <button class="tab active" onclick="showTab('overview')">Overview</button>
-            <button class="tab" onclick="showTab('meals')">Daily Meals</button>
-            <button class="tab" onclick="showTab('weekly')">Weekly Prep</button>
-            <button class="tab" onclick="showTab('shopping')">Shopping Lists</button>
+            <button class="tab active" onclick="showTab('overview', this)">Overview</button>
+            <button class="tab" onclick="showTab('meals', this)">Daily Meals</button>
+            <button class="tab" onclick="showTab('weekly', this)">Weekly Prep</button>
+            <button class="tab" onclick="showTab('shopping', this)">Shopping Lists</button>
         </div>
         
         <div class="content">
@@ -251,11 +251,11 @@
             }
         };
         
-        function showTab(tab) {
+        function showTab(tabName, element) {
             document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
             document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
-            document.getElementById(tab).classList.add('active');
-            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            element.classList.add('active');
         }
         
         function selectMealWeek(week) {
@@ -363,4 +363,12 @@
             document.getElementById('shoppingContent').innerHTML = html;
         }
         
-        window.onload =
+        window.onload = function() {
+            loadWeekContent(1);
+            loadShoppingList(1);
+            loadDaySelector(1);
+            loadDayContent(1);
+        };
+    </script>
+</body>
+</html>

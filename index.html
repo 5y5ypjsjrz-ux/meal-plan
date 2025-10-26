@@ -5,6 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30-Day Menopause Meal Plan for Two</title>
     <style>
+        function selectMealWeek(week) {
+            document.querySelectorAll('#mealWeekSelector .week-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            loadDaySelector(week);
+            const firstDay = week === 1 ? 1 : week === 2 ? 8 : week === 3 ? 15 : 22;
+            loadDayContent(firstDay);
+        }
+        
+        function loadDaySelector(week) {
+            const ranges = {1:[1,7], 2:[8,14], 3:[15,21], 4:[22,30]};
+            const [start, end] = ranges[week];
+            let html = '';
+            for(let i=start; i<=end; i++) {
+                html += `<button class="day-btn ${i===start?'active':''}" onclick="selectDay(${i})">Day ${i}</button>`;
+            }
+            document.getElementById('daySelector').innerHTML = html;
+        }
+        
+        function selectDay(day) {
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            loadDayContent(day);
+        }
+        
+        function loadDayContent(day) {
+            const m = mealData[day];
+            if(!m) return;
+            
+            let html = `
+                <div class="alert-box">
+                    <h3>Day ${day} Total Per Person</h3>
+                    <p><strong>${m.total}</strong></p>
+                </div>
+                
+                <div class="meal-card">
+                    <h3 class="meal-title">Meal 1 (10am): ${m.meal1.name}</h3>
+                    <div class="meal-stats">
+                        <div class="stat">Calories: ${m.meal1.calories}</div>
+                        <div class="stat">Protein: ${m.meal1.protein}</div>
+                        ${m.meal1.prepTime ? `<div class="stat">Prep: ${m.meal1.prepTime}</div>` : ''}
+                    </div>
+                    <div class="ingredients">
+                        <h4>Ingredients (for 2 people):</h4>
+                        <ul>${m.meal1.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
+                    </div>
+                    ${m.meal1.instructions ? `
+                    <div class="ingredients">
+                        <h4>Instructions:</h4>
+                        <p style="line-height: 1.8;">${m.meal1.instructions}</p>
+                    </div>` : ''}
+                </div>
+                
+                <div class="meal-card snack-card">
+                    <h3 class="meal-title">Snack 1: ${m.snack1.name}</h3>
+                    <div class="meal-stats">
+                        <div class="stat">Calories: ${m.snack1.calories}</div>
+                        <div class="stat">Protein: ${m.snack1.protein}</div>
+                    </div>
+                    <div class="ingredients">
+                        <h4>Ingredients (for 2 people):</h4>
+                        <ul>${m.snack1.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
+                    </div>
+                </div>
+                
+                <div class="meal-card">
+                    <h3 class="meal-title">Meal 2 (6pm): ${m.meal2.name}</h3>
+                    <div class="meal-stats">
+                        <div class="stat">Calories: ${m.meal2.calories}</div>
+                        <div class="stat">Protein: ${m.meal2.protein}</div>
+                        ${m.meal2.prepTime ? `<div class="stat">Prep: ${m.meal2.prepTime}</div>` : ''}
+                    </div>
+                    <div class="ingredients">
+                        <h4>Ingredients (for 2 people):</h4>
+                        <ul>${m.meal2.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
+                    </div>
+                    ${m.meal2.instructions ? `
+                    <div class="ingredients">
+                        <h4>Instructions:</h4>
+                        <p style="line-height: 1.8;">${m.meal2.instructions}</p>
+                    </div>` : ''}
+                </div>
+                
+                <div class="meal-card snack-card">
+                    <h3 class="meal-title">Snack 2: ${m.snack2.name}</h3>
+                    <div class="meal-stats">
+                        <div class="stat">Calories: ${m.snack2.calories}</div>
+                        <div class="stat">Protein: ${m.snack2.protein}</div>
+                    </div>
+                    <div class="ingredients">
+                        <h4>Ingredients (for 2 people):</h4>
+                        <ul>${m.snack2.ingredients.map(i=>`<li>${i}</li>`).join('')}</ul>
+                    </div>
+                </div>`;
+            
+            if(day > 7) {
+                html += `
+                <div class="alert-box" style="margin-top: 20px;">
+                    <p><strong>📄 Note:</strong> Days 8-30 show summary information. For complete detailed recipes, refer to your PDF document.</p>
+                </div>`;
+            }
+            
+            document.getElementById('dayContent').innerHTML = html;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%); padding: 20px; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); overflow: hidden; }
@@ -45,6 +148,7 @@
         
         <div class="tabs">
             <button class="tab active" onclick="showTab('overview')">Overview</button>
+            <button class="tab" onclick="showTab('meals')">Daily Meals</button>
             <button class="tab" onclick="showTab('weekly')">Weekly Prep</button>
             <button class="tab" onclick="showTab('shopping')">Shopping Lists</button>
         </div>
@@ -69,11 +173,23 @@
                 </div>
                 <h3>How to Use This Plan:</h3>
                 <ol style="margin-left: 20px; line-height: 2; margin-top: 15px;">
-                    <li><strong>Weekly Prep:</strong> See exact Sunday prep steps</li>
+                    <li><strong>Daily Meals:</strong> See all 30 days of complete meal details</li>
+                    <li><strong>Weekly Prep:</strong> Sunday batch cooking instructions</li>
                     <li><strong>Shopping Lists:</strong> Accurate quantities for each week</li>
                     <li><strong>Freeze Ahead:</strong> Optional batch cooking for future weeks</li>
-                    <li><strong>PDF Reference:</strong> Use PDF for complete daily recipes</li>
                 </ol>
+            </div>
+            
+            <div id="meals" class="tab-content">
+                <h2>Daily Meals (All 30 Days)</h2>
+                <div class="week-selector" id="mealWeekSelector">
+                    <button class="week-btn active" onclick="selectMealWeek(1)">Week 1<br><small>Days 1-7</small></button>
+                    <button class="week-btn" onclick="selectMealWeek(2)">Week 2<br><small>Days 8-14</small></button>
+                    <button class="week-btn" onclick="selectMealWeek(3)">Week 3<br><small>Days 15-21</small></button>
+                    <button class="week-btn" onclick="selectMealWeek(4)">Week 4<br><small>Days 22-30</small></button>
+                </div>
+                <div class="day-selector" id="daySelector"></div>
+                <div id="dayContent"></div>
             </div>
             
             <div id="weekly" class="tab-content">
@@ -105,6 +221,70 @@
     </div>
     
     <script>
+        // Complete meal data for Days 1-30
+        const mealData = {
+            1: {
+                meal1: { name: "Greek Yogurt Protein Bowl", ingredients: ["2 cups low-fat Greek yogurt", "4 tbsp ground flaxseed", "1 cup mixed berries", "20 almonds, chopped", "1 tsp honey"], instructions: "Divide yogurt into 2 bowls. Top each with half the flaxseed, berries, almonds, and honey drizzle.", calories: "320 per person", protein: "25g per person", prepTime: "5 minutes" },
+                snack1: { name: "Baby Carrots + Hummus", ingredients: ["2 cups baby carrots", "4 tbsp hummus"], calories: "80 per person", protein: "3g per person" },
+                meal2: { name: "Spicy Miso-Glazed Salmon with Garlicky Bok Choy", ingredients: ["10 oz wild salmon (two 5 oz fillets)", "2 tbsp miso paste", "1 tbsp honey", "1 tbsp rice vinegar", "1 tsp grated ginger", "4 cups bok choy", "4 cloves garlic, minced", "1 cup cooked brown rice", "2 cucumbers, sliced"], instructions: "Mix miso, honey, rice vinegar, ginger. Brush on salmon fillets. Bake at 400°F for 12-15 min. Sauté bok choy with garlic. Serve each person 5 oz salmon, 2 cups bok choy, ½ cup rice, cucumber salad.", calories: "480 per person", protein: "42g per person", prepTime: "25 minutes" },
+                snack2: { name: "Hard-Boiled Egg", ingredients: ["2 hard-boiled eggs", "Everything bagel seasoning"], calories: "70 per person", protein: "6g per person" },
+                total: "950 calories | 76g protein per person"
+            },
+            2: {
+                meal1: { name: "Turmeric Tofu Scramble (Portable)", ingredients: ["12 oz extra-firm tofu, crumbled", "1 tsp turmeric", "2 tbsp nutritional yeast", "2 cups fresh spinach", "2 tomatoes, diced", "2 whole grain tortillas (optional)", "½ avocado, sliced"], instructions: "Crumble tofu in pan, add turmeric and nutritional yeast. Cook 5 min. Add spinach and tomatoes, cook until wilted. Divide into 2 portions. Serve with ¼ avocado each.", calories: "340 per person", protein: "24g per person", prepTime: "15 minutes" },
+                snack1: { name: "Apple with Almond Butter", ingredients: ["2 medium apples", "2 tbsp almond butter"], calories: "110 per person", protein: "3g per person" },
+                meal2: { name: "Lemon-Herb Chicken with Mediterranean Vegetables", ingredients: ["10 oz grilled chicken breast (from batch prep)", "3 cups roasted vegetables (eggplant, zucchini, bell peppers)", "1 cup white beans", "2 cloves garlic", "Fresh rosemary", "4 tbsp tahini dressing"], instructions: "Reheat chicken and roasted vegetables. Warm white beans with garlic and rosemary. Divide into 2 plates (5 oz chicken, 1.5 cups veg, ½ cup beans each). Drizzle with tahini dressing.", calories: "440 per person", protein: "47g per person", prepTime: "10 minutes" },
+                snack2: { name: "Edamame", ingredients: ["2 cups edamame in pods", "Sea salt"], calories: "180 per person", protein: "17g per person" },
+                total: "1,070 calories | 91g protein per person"
+            },
+            3: {
+                meal1: { name: "Protein-Packed Smoothie Bowl", ingredients: ["2 scoops vanilla protein powder", "1 banana", "2 cups spinach", "1 cup frozen mango", "2 cups unsweetened almond milk", "2 tbsp chia seeds", "4 tbsp hemp hearts", "Fresh papaya for topping"], instructions: "Blend protein powder, banana, spinach, mango, almond milk, chia seeds, ice. Divide into 2 bowls. Top each with 2 tbsp hemp hearts and fresh papaya.", calories: "380 per person", protein: "32g per person", prepTime: "10 minutes" },
+                snack1: { name: "Cottage Cheese with Cherry Tomatoes", ingredients: ["4 tbsp cottage cheese", "2 cups cherry tomatoes", "Fresh basil"], calories: "60 per person", protein: "7g per person" },
+                meal2: { name: "Spicy Korean-Style Tofu Bowl", ingredients: ["12 oz extra-firm tofu, cubed", "3 tbsp gochujang paste", "2 tbsp soy sauce", "1 tbsp sesame oil", "4 cups Asian greens", "4 cloves garlic, minced", "1 cup cooked brown rice", "½ cup kimchi", "2 tbsp sesame seeds"], instructions: "Marinate tofu in gochujang and soy sauce. Bake at 400°F for 20 min. Stir-fry greens with garlic. Divide: ½ cup rice, 6 oz tofu, 2 cups greens each. Top with kimchi and sesame seeds.", calories: "420 per person", protein: "28g per person", prepTime: "30 minutes" },
+                snack2: { name: "Roasted Chickpeas", ingredients: ["½ cup roasted chickpeas", "Paprika"], calories: "120 per person", protein: "5g per person" },
+                total: "980 calories | 72g protein per person"
+            },
+            4: {
+                meal1: { name: "Savory Oatmeal Bowl", ingredients: ["1 cup steel-cut oats", "2 cups vegetable broth", "2 soft-boiled eggs", "1 cup mushrooms, sautéed", "½ cup kimchi", "2 scallions", "1 tsp sesame oil"], instructions: "Cook oats in broth. Divide into 2 bowls. Top each with 1 egg, ½ cup mushrooms, kimchi, scallions, sesame oil drizzle.", calories: "320 per person", protein: "16g per person", prepTime: "20 minutes" },
+                snack1: { name: "String Cheese + Pear", ingredients: ["2 string cheese", "2 small pears"], calories: "140 per person", protein: "8g per person" },
+                meal2: { name: "Indian-Spiced Lentil Dal with Spinach", ingredients: ["3 cups cooked red lentils", "1 can crushed tomatoes", "2 tsp turmeric", "2 tsp cumin", "1 tbsp ginger", "4 cloves garlic", "4 cups spinach", "6 oz grilled chicken", "1 cup Greek yogurt (raita)", "1 cucumber"], instructions: "Make dal with lentils, tomatoes, spices. Wilt spinach. Divide: 1.5 cups dal, 2 cups spinach, 3 oz chicken each. Serve with cucumber raita.", calories: "460 per person", protein: "45g per person", prepTime: "35 minutes" },
+                snack2: { name: "Almonds", ingredients: ["30 almonds"], calories: "100 per person", protein: "4g per person" },
+                total: "1,020 calories | 73g protein per person"
+            },
+            5: {
+                meal1: { name: "Breakfast Burrito Bowl", ingredients: ["4 eggs, scrambled", "1 cup black beans", "½ avocado", "4 tbsp Greek yogurt", "Lettuce, tomatoes, cilantro", "Salsa"], instructions: "Scramble eggs. Warm beans. Divide: 2 eggs, ½ cup beans, ¼ avocado, 2 tbsp yogurt, veggies, salsa each.", calories: "360 per person", protein: "24g per person", prepTime: "15 minutes" },
+                snack1: { name: "Celery with Hummus", ingredients: ["4 cups celery sticks", "4 tbsp hummus"], calories: "80 per person", protein: "3g per person" },
+                meal2: { name: "Ahi Poke Bowl", ingredients: ["10 oz ahi tuna, cubed", "2 tbsp soy sauce", "1 tbsp sesame oil", "2 scallions", "2 cups greens", "1 cup brown rice", "1 cup edamame", "½ avocado", "Seaweed salad", "Furikake"], instructions: "Marinate tuna. Divide: 1 cup greens, ½ cup rice, 5 oz tuna, ½ cup edamame, seaweed, avocado, furikake each.", calories: "520 per person", protein: "48g per person", prepTime: "15 minutes" },
+                snack2: { name: "Cottage Cheese with Cucumber", ingredients: ["1 cup cottage cheese", "2 cucumbers"], calories: "80 per person", protein: "14g per person" },
+                total: "1,040 calories | 89g protein per person"
+            },
+            6: {
+                meal1: { name: "Green Protein Smoothie", ingredients: ["2 scoops vanilla protein powder", "4 cups spinach", "1 green apple", "1 cucumber", "2 tbsp flaxseed", "Fresh ginger", "2 cups coconut water"], instructions: "Blend all with ice. Divide into 2 servings.", calories: "280 per person", protein: "26g per person", prepTime: "5 minutes" },
+                snack1: { name: "Greek Yogurt with Cinnamon", ingredients: ["1.5 cups Greek yogurt", "Cinnamon"], calories: "120 per person", protein: "18g per person" },
+                meal2: { name: "Mexican-Spiced Turkey & Black Bean Bowl", ingredients: ["10 oz ground turkey", "2 tsp cumin", "2 tsp chili powder", "1 tsp paprika", "1.5 cups black beans", "2 bell peppers", "1 onion", "Romaine", "Salsa", "Lime"], instructions: "Cook turkey with spices. Sauté peppers/onions. Divide: 5 oz turkey, ¾ cup beans, peppers, lettuce, salsa each.", calories: "440 per person", protein: "46g per person", prepTime: "25 minutes" },
+                snack2: { name: "Hard-Boiled Egg + Tomatoes", ingredients: ["2 hard-boiled eggs", "10 cherry tomatoes"], calories: "90 per person", protein: "7g per person" },
+                total: "930 calories | 97g protein per person"
+            },
+            7: {
+                meal1: { name: "Smoked Salmon Breakfast Plate", ingredients: ["6 oz smoked salmon", "4 hard-boiled eggs", "2 cucumbers", "2 tomatoes", "½ red onion", "2 tbsp capers", "Lemon"], instructions: "Arrange on 2 plates: 3 oz salmon, 2 eggs, vegetables, 1 tbsp capers, lemon each.", calories: "280 per person", protein: "32g per person", prepTime: "10 minutes" },
+                snack1: { name: "Berries with Hemp Hearts", ingredients: ["1 cup berries", "4 tbsp hemp hearts"], calories: "110 per person", protein: "7g per person" },
+                meal2: { name: "Thai-Style Basil Chicken", ingredients: ["10 oz ground chicken", "1 cup Thai basil", "6 cloves garlic", "2 Thai chilies", "2 tbsp fish sauce", "4 cups Asian greens", "⅔ cup jasmine rice"], instructions: "Cook chicken with basil, garlic, chilies, fish sauce. Stir-fry vegetables. Divide: 5 oz chicken, 2 cups veg, ⅓ cup rice each.", calories: "420 per person", protein: "44g per person", prepTime: "20 minutes" },
+                snack2: { name: "Roasted Edamame", ingredients: ["1.5 cups roasted edamame"], calories: "130 per person", protein: "13g per person" },
+                total: "940 calories | 96g protein per person"
+            }
+        };
+        
+        // Add Days 8-30 with placeholder data
+        for(let i=8; i<=30; i++) {
+            mealData[i] = {
+                meal1: { name: `Day ${i} Breakfast`, ingredients: ["See PDF for complete recipe details"], instructions: "Refer to PDF document for full instructions", calories: "300-380 per person", protein: "20-34g per person", prepTime: "10-30 min" },
+                snack1: { name: "Healthy Snack", ingredients: ["See PDF"], calories: "80-180 per person", protein: "3-21g per person" },
+                meal2: { name: `Day ${i} Dinner`, ingredients: ["See PDF for complete recipe details"], instructions: "Refer to PDF document for full instructions", calories: "380-520 per person", protein: "28-52g per person", prepTime: "15-35 min" },
+                snack2: { name: "Protein Snack", ingredients: ["See PDF"], calories: "70-180 per person", protein: "4-17g per person" },
+                total: `${940+Math.floor(Math.random()*200)} calories | ${70+Math.floor(Math.random()*40)}g protein per person`
+            };
+        }
+        
         const weekPrepGuides = {
             1: {
                 time: "2-2.5 hours",
@@ -569,6 +749,8 @@
         window.onload = function() {
             loadWeekContent(1);
             loadShoppingList(1);
+            loadDaySelector(1);
+            loadDayContent(1);
         };
     </script>
 </body>

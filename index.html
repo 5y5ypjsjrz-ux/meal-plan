@@ -124,33 +124,32 @@
             
             <div id="meals" class="tab-content">
                 <h2>Daily Meals (All 30 Days)</h2>
-                <div class="week-selector" id="mealWeekSelector">
-                    <button class="week-btn active" onclick="selectMealWeek(1)">Week 1<br><small>Days 1-7</small></button>
-                    <button class="week-btn" onclick="selectMealWeek(2)">Week 2<br><small>Days 8-14</small></button>
-                    <button class="week-btn" onclick="selectMealWeek(3)">Week 3<br><small>Days 15-21</small></button>
-                    <button class="week-btn" onclick="selectMealWeek(4)">Week 4<br><small>Days 22-30</small></button>
+                
+                <div id="mealWeekSelector" class="week-selector">
+                    <button class="week-btn active" onclick="selectMealWeek(1)">Week 1<br>Days 1-7</button>
+                    <button class="week-btn" onclick="selectMealWeek(2)">Week 2<br>Days 8-14</button>
+                    <button class="week-btn" onclick="selectMealWeek(3)">Week 3<br>Days 15-21</button>
+                    <button class="week-btn" onclick="selectMealWeek(4)">Week 4<br>Days 22-30</button>
                 </div>
-                <div class="day-selector" id="daySelector"></div>
+                
+                <div id="daySelector" class="day-selector"></div>
                 <div id="dayContent"></div>
             </div>
             
             <div id="weekly" class="tab-content">
                 <h2>Weekly Prep Guides</h2>
-                <div class="week-selector" id="weekSelector">
-                    <button class="week-btn active" onclick="selectWeek(1)">Week 1<br><small>Days 1-7</small></button>
-                    <button class="week-btn" onclick="selectWeek(2)">Week 2<br><small>Days 8-14</small></button>
-                    <button class="week-btn" onclick="selectWeek(3)">Week 3<br><small>Days 15-21</small></button>
-                    <button class="week-btn" onclick="selectWeek(4)">Week 4<br><small>Days 22-30</small></button>
+                <div id="weekSelector" class="week-selector">
+                    <button class="week-btn active" onclick="selectWeek(1)">Week 1</button>
+                    <button class="week-btn" onclick="selectWeek(2)">Week 2</button>
+                    <button class="week-btn" onclick="selectWeek(3)">Week 3</button>
+                    <button class="week-btn" onclick="selectWeek(4)">Week 4</button>
                 </div>
                 <div id="weekContent"></div>
             </div>
             
             <div id="shopping" class="tab-content">
                 <h2>Shopping Lists</h2>
-                <div class="alert-box">
-                    <p><strong>All quantities for 2 people for the entire week</strong></p>
-                </div>
-                <div class="week-selector" id="shoppingWeekSelector">
+                <div id="shoppingWeekSelector" class="week-selector">
                     <button class="week-btn active" onclick="selectShoppingWeek(1)">Week 1</button>
                     <button class="week-btn" onclick="selectShoppingWeek(2)">Week 2</button>
                     <button class="week-btn" onclick="selectShoppingWeek(3)">Week 3</button>
@@ -162,92 +161,695 @@
     </div>
     
     <script>
+        var mealData = {
+            1: {
+                total: "950 calories | 76g protein",
+                meal1: {
+                    name: "Greek Yogurt Protein Bowl",
+                    calories: "320 cal",
+                    protein: "25g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["2 cups low-fat Greek yogurt", "4 tbsp ground flaxseed", "1 cup mixed berries", "20 almonds, chopped", "1 tsp honey"],
+                    instructions: "Divide yogurt into 2 bowls. Top each with half the flaxseed, berries, almonds, and honey drizzle."
+                },
+                snack1: {name: "Baby Carrots + Hummus", calories: "80 cal", protein: "3g protein", ingredients: ["2 cups baby carrots", "4 tbsp hummus"]},
+                meal2: {
+                    name: "Spicy Miso-Glazed Salmon with Garlicky Bok Choy",
+                    calories: "480 cal",
+                    protein: "42g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["10 oz wild salmon (two 5 oz fillets)", "2 tbsp miso paste", "1 tbsp honey", "1 tbsp rice vinegar", "1 tsp grated ginger", "4 cups bok choy", "4 cloves garlic, minced", "1 cup cooked brown rice", "2 cucumbers, sliced", "2 tbsp rice vinegar for salad"],
+                    instructions: "Mix miso, honey, rice vinegar, ginger. Brush on salmon fillets. Bake at 400°F for 12-15 min. Sauté bok choy with garlic. Serve each person 5 oz salmon, 2 cups bok choy, ½ cup rice, cucumber salad."
+                },
+                snack2: {name: "Hard-Boiled Egg with Everything Bagel Seasoning", calories: "70 cal", protein: "6g protein", ingredients: ["2 hard-boiled eggs", "Everything bagel seasoning"]}
+            },
+            2: {
+                total: "1,070 calories | 91g protein",
+                meal1: {
+                    name: "Turmeric Tofu Scramble (Portable)",
+                    calories: "340 cal",
+                    protein: "24g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["12 oz extra-firm tofu, crumbled", "1 tsp turmeric", "2 tbsp nutritional yeast", "2 cups fresh spinach", "2 tomatoes, diced", "2 whole grain tortillas (optional)", "½ avocado, sliced"],
+                    instructions: "Crumble tofu in pan, add turmeric and nutritional yeast. Cook 5 min. Add spinach and tomatoes, cook until wilted. Divide into 2 portions. Serve with ¼ avocado each, in tortilla or container."
+                },
+                snack1: {name: "Apple Slices with Almond Butter", calories: "110 cal", protein: "3g protein", ingredients: ["2 medium apples", "2 tbsp almond butter"]},
+                meal2: {
+                    name: "Lemon-Herb Chicken with Mediterranean Vegetables",
+                    calories: "440 cal",
+                    protein: "47g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["10 oz grilled chicken breast (from batch prep)", "3 cups roasted vegetables (eggplant, zucchini, bell peppers)", "1 cup white beans", "2 cloves garlic", "Fresh rosemary", "4 tbsp tahini dressing", "Lemon juice"],
+                    instructions: "Reheat chicken and roasted vegetables. Warm white beans with garlic and rosemary. Divide into 2 plates (5 oz chicken, 1.5 cups veg, ½ cup beans each). Drizzle with tahini dressing."
+                },
+                snack2: {name: "Edamame", calories: "180 cal", protein: "17g protein", ingredients: ["2 cups edamame in pods", "Sea salt"]}
+            },
+            3: {
+                total: "980 calories | 72g protein",
+                meal1: {
+                    name: "Protein-Packed Smoothie Bowl",
+                    calories: "380 cal",
+                    protein: "32g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["2 scoops vanilla protein powder", "1 banana", "2 cups spinach", "1 cup frozen mango", "2 cups unsweetened almond milk", "2 tbsp chia seeds", "4 tbsp hemp hearts", "Fresh papaya chunks for topping"],
+                    instructions: "Blend protein powder, banana, spinach, mango, almond milk, chia seeds, and ice. Divide into 2 bowls. Top each with 2 tbsp hemp hearts and fresh papaya."
+                },
+                snack1: {name: "Cottage Cheese with Cherry Tomatoes", calories: "60 cal", protein: "7g protein", ingredients: ["4 tbsp cottage cheese", "2 cups cherry tomatoes", "Fresh basil"]},
+                meal2: {
+                    name: "Spicy Korean-Style Tofu Bowl",
+                    calories: "420 cal",
+                    protein: "28g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["12 oz extra-firm tofu, cubed", "3 tbsp gochujang paste", "2 tbsp soy sauce", "1 tbsp sesame oil", "4 cups Asian greens (choy sum, gai lan)", "4 cloves garlic, minced", "1 cup cooked brown rice", "½ cup kimchi", "2 tbsp sesame seeds"],
+                    instructions: "Marinate tofu in gochujang and soy sauce. Bake at 400°F for 20 min. Stir-fry greens with garlic. Divide into 2 bowls: ½ cup rice, 6 oz tofu, 2 cups greens each. Top with kimchi and sesame seeds."
+                },
+                snack2: {name: "Roasted Chickpeas", calories: "120 cal", protein: "5g protein", ingredients: ["½ cup roasted chickpeas", "1 tsp paprika", "Sea salt"]}
+            },
+            4: {
+                total: "1,020 calories | 73g protein",
+                meal1: {
+                    name: "Savory Oatmeal Bowl (Portable)",
+                    calories: "320 cal",
+                    protein: "16g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["1 cup steel-cut oats", "2 cups vegetable broth", "2 soft-boiled eggs", "1 cup mushrooms, sautéed", "½ cup kimchi", "2 scallions, sliced", "1 tsp sesame oil"],
+                    instructions: "Cook oats in vegetable broth. Divide into 2 bowls. Top each with 1 soft-boiled egg, ½ cup mushrooms, kimchi, scallions, and drizzle of sesame oil."
+                },
+                snack1: {name: "String Cheese + Small Pear", calories: "140 cal", protein: "8g protein", ingredients: ["2 string cheese sticks", "2 small pears"]},
+                meal2: {
+                    name: "Indian-Spiced Lentil Dal with Spinach",
+                    calories: "460 cal",
+                    protein: "45g protein",
+                    prepTime: "35 min prep",
+                    ingredients: ["3 cups cooked red lentils", "1 can (14 oz) crushed tomatoes", "2 tsp turmeric", "2 tsp cumin", "1 tbsp grated ginger", "4 cloves garlic, minced", "4 cups fresh spinach", "6 oz grilled chicken breast", "1 cup Greek yogurt for raita", "1 cucumber, diced", "Fresh cilantro"],
+                    instructions: "Make dal: cook lentils with tomatoes, turmeric, cumin, ginger, garlic. Wilt spinach. Divide into 2 bowls (1.5 cups dal, 2 cups spinach, 3 oz chicken each). Serve with cucumber raita on side."
+                },
+                snack2: {name: "Almonds", calories: "100 cal", protein: "4g protein", ingredients: ["30 almonds (about 2 handfuls)"]}
+            },
+            5: {
+                total: "1,040 calories | 89g protein",
+                meal1: {
+                    name: "Breakfast Burrito Bowl (Meal Prep)",
+                    calories: "360 cal",
+                    protein: "24g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["4 eggs, scrambled", "1 cup black beans", "½ avocado, diced", "4 tbsp low-fat Greek yogurt", "Lettuce, tomatoes, cilantro", "Salsa"],
+                    instructions: "Scramble 4 eggs. Warm black beans. Divide into 2 bowls: 2 eggs, ½ cup beans, ¼ avocado, 2 tbsp yogurt, veggies, and salsa each."
+                },
+                snack1: {name: "Celery with Hummus", calories: "80 cal", protein: "3g protein", ingredients: ["4 cups celery sticks", "4 tbsp hummus"]},
+                meal2: {
+                    name: "Ahi Poke Bowl (Hawaii Special!)",
+                    calories: "520 cal",
+                    protein: "48g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["10 oz sushi-grade ahi tuna, cubed", "2 tbsp soy sauce", "1 tbsp sesame oil", "2 scallions, sliced", "2 cups mixed greens", "1 cup cooked brown rice", "1 cup edamame", "½ avocado, sliced", "Seaweed salad", "Furikake seasoning"],
+                    instructions: "Marinate tuna in soy sauce, sesame oil, scallions. Divide into 2 bowls: 1 cup greens, ½ cup rice, 5 oz tuna, ½ cup edamame, seaweed salad, avocado, furikake each."
+                },
+                snack2: {name: "Cottage Cheese with Cucumber", calories: "80 cal", protein: "14g protein", ingredients: ["1 cup low-fat cottage cheese", "2 cucumbers, sliced"]}
+            },
+            6: {
+                total: "930 calories | 97g protein",
+                meal1: {
+                    name: "Green Protein Smoothie (Quick & Portable)",
+                    calories: "280 cal",
+                    protein: "26g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["2 scoops vanilla protein powder", "4 cups spinach or kale", "1 green apple", "1 cucumber", "2 tbsp ground flaxseed", "Fresh ginger (1 inch piece)", "2 cups coconut water"],
+                    instructions: "Blend all ingredients with ice. Divide into 2 portions."
+                },
+                snack1: {name: "Greek Yogurt with Cinnamon", calories: "120 cal", protein: "18g protein", ingredients: ["1.5 cups Greek yogurt", "Cinnamon to taste"]},
+                meal2: {
+                    name: "Mexican-Spiced Turkey & Black Bean Bowl",
+                    calories: "440 cal",
+                    protein: "46g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["10 oz ground turkey", "2 tsp cumin", "2 tsp chili powder", "1 tsp paprika", "1.5 cups black beans", "2 bell peppers, sliced", "1 onion, sliced", "Romaine lettuce", "Salsa", "2 limes, cut in wedges"],
+                    instructions: "Cook ground turkey with spices. Sauté peppers and onions. Warm black beans. Divide into 2 bowls: 5 oz turkey, ¾ cup beans, peppers/onions, lettuce, salsa, lime each."
+                },
+                snack2: {name: "Hard-Boiled Egg + Cherry Tomatoes", calories: "90 cal", protein: "7g protein", ingredients: ["2 hard-boiled eggs", "10 cherry tomatoes"]}
+            },
+            7: {
+                total: "940 calories | 96g protein",
+                meal1: {
+                    name: "Smoked Salmon Breakfast Plate",
+                    calories: "280 cal",
+                    protein: "32g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["6 oz smoked salmon", "4 hard-boiled eggs", "2 cucumbers, sliced", "2 tomatoes, sliced", "½ red onion, thinly sliced", "2 tbsp capers", "2 lemons, cut in wedges"],
+                    instructions: "Arrange on 2 plates: 3 oz salmon, 2 eggs, cucumber, tomatoes, onion, 1 tbsp capers, lemon wedges each."
+                },
+                snack1: {name: "Berries with Hemp Hearts", calories: "110 cal", protein: "7g protein", ingredients: ["1 cup mixed berries", "4 tbsp hemp hearts"]},
+                meal2: {
+                    name: "Thai-Style Basil Chicken with Vegetables",
+                    calories: "420 cal",
+                    protein: "44g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["10 oz ground chicken", "1 cup Thai basil leaves", "6 cloves garlic, minced", "2 Thai chilies, minced", "2 tbsp fish sauce", "4 cups Asian greens and snap peas", "⅔ cup cooked jasmine rice"],
+                    instructions: "Cook ground chicken with basil, garlic, chilies, fish sauce. Stir-fry vegetables. Divide into 2 portions: 5 oz chicken, 2 cups vegetables, ⅓ cup rice each."
+                },
+                snack2: {name: "Roasted Edamame", calories: "130 cal", protein: "13g protein", ingredients: ["1.5 cups roasted edamame"]}
+            },
+            8: {
+                total: "1,040 calories | 90g protein",
+                meal1: {
+                    name: "Quinoa Breakfast Bowl",
+                    calories: "340 cal",
+                    protein: "20g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["1 cup cooked quinoa", "2 eggs scrambled", "½ cup black beans", "½ avocado", "Salsa", "Cilantro"],
+                    instructions: "Warm quinoa. Scramble eggs. Divide into bowls with beans, avocado, salsa."
+                },
+                snack1: {name: "Protein Balls", calories: "120 cal", protein: "6g protein", ingredients: ["2 protein balls (from batch prep)", "Made with oats, dates, protein powder"]},
+                meal2: {
+                    name: "Grilled Opah with Chimichurri",
+                    calories: "480 cal",
+                    protein: "52g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["12 oz grilled opah", "Chimichurri sauce", "2 cups roasted vegetables", "1 cup quinoa"],
+                    instructions: "Grill opah, serve with chimichurri, roasted veggies, and quinoa."
+                },
+                snack2: {name: "Bell Pepper with Cottage Cheese", calories: "100 cal", protein: "12g protein", ingredients: ["1 bell pepper, sliced", "½ cup cottage cheese"]}
+            },
+            9: {
+                total: "1,000 calories | 93g protein",
+                meal1: {
+                    name: "Chocolate Protein Smoothie",
+                    calories: "320 cal",
+                    protein: "30g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["2 scoops chocolate protein powder", "2 cups almond milk", "1 banana", "2 tbsp peanut butter powder", "Ice"],
+                    instructions: "Blend all ingredients until smooth. Divide into 2 portions."
+                },
+                snack1: {name: "Hard-Boiled Egg + Cucumber", calories: "90 cal", protein: "7g protein", ingredients: ["2 hard-boiled eggs", "1 cucumber, sliced"]},
+                meal2: {
+                    name: "Italian Turkey Meatballs with Zoodles",
+                    calories: "450 cal",
+                    protein: "48g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["6 turkey meatballs (from batch prep)", "4 cups zucchini noodles", "2 cups marinara sauce", "Fresh basil", "Parmesan"],
+                    instructions: "Heat meatballs in marinara. Sauté zoodles briefly. Divide and top with sauce and cheese."
+                },
+                snack2: {name: "Edamame", calories: "140 cal", protein: "8g protein", ingredients: ["1 cup edamame"]}
+            },
+            10: {
+                total: "1,060 calories | 69g protein",
+                meal1: {
+                    name: "Middle Eastern Chickpea Bowl",
+                    calories: "360 cal",
+                    protein: "15g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["2 cups cooked chickpeas", "2 cups mixed greens", "4 tbsp tahini", "Za'atar", "Cucumber", "Tomatoes"],
+                    instructions: "Combine chickpeas with greens, drizzle tahini, sprinkle za'atar."
+                },
+                snack1: {name: "Greek Yogurt with Berries", calories: "140 cal", protein: "15g protein", ingredients: ["1 cup Greek yogurt", "½ cup berries"]},
+                meal2: {
+                    name: "Teriyaki Tempeh Stir-Fry",
+                    calories: "440 cal",
+                    protein: "28g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["12 oz tempeh, cubed", "4 cups mixed vegetables", "Teriyaki sauce", "1 cup brown rice", "Sesame seeds"],
+                    instructions: "Stir-fry tempeh with vegetables and teriyaki sauce. Serve over rice."
+                },
+                snack2: {name: "Apple with Almond Butter", calories: "120 cal", protein: "3g protein", ingredients: ["1 apple", "1 tbsp almond butter"]}
+            },
+            11: {
+                total: "980 calories | 81g protein",
+                meal1: {
+                    name: "Savory Cottage Cheese Bowl",
+                    calories: "280 cal",
+                    protein: "28g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["2 cups cottage cheese", "Cherry tomatoes", "Cucumber", "Everything bagel seasoning", "Fresh herbs"],
+                    instructions: "Divide cottage cheese, top with vegetables and seasoning."
+                },
+                snack1: {name: "Trail Mix", calories: "160 cal", protein: "6g protein", ingredients: ["2 oz trail mix (nuts, seeds, dried fruit)"]},
+                meal2: {
+                    name: "Cajun-Spiced Fish Tacos",
+                    calories: "420 cal",
+                    protein: "40g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["10 oz white fish", "Cajun seasoning", "6 small corn tortillas", "Cabbage slaw", "Lime", "Cilantro"],
+                    instructions: "Season and cook fish. Serve in tortillas with slaw."
+                },
+                snack2: {name: "Roasted Chickpeas", calories: "120 cal", protein: "7g protein", ingredients: ["⅔ cup roasted chickpeas"]}
+            },
+            12: {
+                total: "1,050 calories | 85g protein",
+                meal1: {
+                    name: "Spanish-Style Tortilla",
+                    calories: "340 cal",
+                    protein: "22g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["6 eggs", "2 medium potatoes", "1 onion", "Bell peppers", "Olive oil"],
+                    instructions: "Cook potatoes and onions, mix with beaten eggs, cook as frittata."
+                },
+                snack1: {name: "String Cheese + Orange", calories: "120 cal", protein: "9g protein", ingredients: ["2 string cheese", "1 orange"]},
+                meal2: {
+                    name: "Chicken Shawarma Bowl",
+                    calories: "460 cal",
+                    protein: "46g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["10 oz chicken thighs", "Shawarma spices", "2 cups mixed greens", "Tzatziki", "Cucumber", "Tomatoes", "½ cup couscous"],
+                    instructions: "Cook spiced chicken, serve over greens with tzatziki and vegetables."
+                },
+                snack2: {name: "Edamame", calories: "130 cal", protein: "8g protein", ingredients: ["1 cup edamame"]}
+            },
+            13: {
+                total: "940 calories | 71g protein",
+                meal1: {
+                    name: "Protein Pancakes",
+                    calories: "320 cal",
+                    protein: "24g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["2 scoops protein powder", "4 eggs", "1 banana", "Cinnamon", "Berries"],
+                    instructions: "Mix protein, eggs, mashed banana. Cook as pancakes, top with berries."
+                },
+                snack1: {name: "Celery with Almond Butter", calories: "100 cal", protein: "3g protein", ingredients: ["4 celery stalks", "2 tbsp almond butter"]},
+                meal2: {
+                    name: "Vietnamese Lemongrass Tofu Bowl",
+                    calories: "400 cal",
+                    protein: "26g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["12 oz tofu", "Lemongrass", "Lime", "Rice noodles", "Fresh herbs", "Vegetables"],
+                    instructions: "Marinate tofu in lemongrass, cook, serve over noodles with herbs."
+                },
+                snack2: {name: "Hard-Boiled Egg with Tomatoes", calories: "120 cal", protein: "18g protein", ingredients: ["2 eggs", "1 cup cherry tomatoes"]}
+            },
+            14: {
+                total: "1,060 calories | 91g protein",
+                meal1: {
+                    name: "Breakfast Fried Rice",
+                    calories: "360 cal",
+                    protein: "22g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["2 cups cooked rice", "4 eggs", "Mixed vegetables", "Soy sauce", "Sesame oil", "Scallions"],
+                    instructions: "Scramble eggs, add rice and vegetables, season with soy sauce."
+                },
+                snack1: {name: "Greek Yogurt with Hemp Hearts", calories: "140 cal", protein: "20g protein", ingredients: ["1 cup yogurt", "2 tbsp hemp hearts"]},
+                meal2: {
+                    name: "Herb-Crusted Salmon with Roasted Vegetables",
+                    calories: "460 cal",
+                    protein: "42g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["10 oz salmon", "Fresh herbs", "3 cups roasted vegetables", "Lemon"],
+                    instructions: "Coat salmon with herbs, bake with vegetables."
+                },
+                snack2: {name: "Hummus with Veggie Sticks", calories: "100 cal", protein: "7g protein", ingredients: ["4 tbsp hummus", "Carrots, bell peppers"]}
+            },
+            15: {
+                total: "1,050 calories | 92g protein",
+                meal1: {
+                    name: "Egg Muffin Cups",
+                    calories: "300 cal",
+                    protein: "24g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["3 egg muffins (from batch prep)", "With turkey sausage and vegetables"],
+                    instructions: "Reheat egg muffins from batch prep."
+                },
+                snack1: {name: "Half Protein Smoothie", calories: "140 cal", protein: "13g protein", ingredients: ["1 scoop protein powder", "Berries", "Almond milk"]},
+                meal2: {
+                    name: "Moroccan Chickpea Stew",
+                    calories: "480 cal",
+                    protein: "22g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["2 cups chickpeas", "Tomatoes", "Cumin", "Cinnamon", "Harissa", "Spinach", "Couscous"],
+                    instructions: "Cook chickpeas with spices and tomatoes, serve over couscous."
+                },
+                snack2: {name: "Roasted Edamame", calories: "130 cal", protein: "13g protein", ingredients: ["1 cup edamame"]}
+            },
+            16: {
+                total: "1,010 calories | 94g protein",
+                meal1: {
+                    name: "Tropical Protein Smoothie Bowl",
+                    calories: "340 cal",
+                    protein: "28g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["2 scoops protein powder", "Pineapple", "Mango", "Coconut flakes", "Macadamia nuts"],
+                    instructions: "Blend protein with tropical fruits, top with coconut and nuts."
+                },
+                snack1: {name: "Cottage Cheese with Pineapple", calories: "120 cal", protein: "14g protein", ingredients: ["½ cup cottage cheese", "½ cup pineapple"]},
+                meal2: {
+                    name: "Japanese Grilled Chicken Thighs",
+                    calories: "440 cal",
+                    protein: "46g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["10 oz chicken thighs", "Teriyaki glaze", "Asian vegetables", "Brown rice", "Pickled ginger"],
+                    instructions: "Grill marinated chicken, serve with rice and vegetables."
+                },
+                snack2: {name: "Hard-Boiled Egg with Nori", calories: "110 cal", protein: "6g protein", ingredients: ["2 eggs", "Nori seaweed sheets"]}
+            },
+            17: {
+                total: "1,090 calories | 81g protein",
+                meal1: {
+                    name: "Mediterranean Farro Bowl",
+                    calories: "360 cal",
+                    protein: "16g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["1 cup cooked farro", "Feta cheese", "Olives", "Cucumbers", "Tomatoes", "Artichokes"],
+                    instructions: "Combine farro with vegetables, feta, and olive oil."
+                },
+                snack1: {name: "Apple with String Cheese", calories: "140 cal", protein: "8g protein", ingredients: ["1 apple", "2 string cheese"]},
+                meal2: {
+                    name: "Spicy Tuna Poke with Cauliflower Rice",
+                    calories: "470 cal",
+                    protein: "50g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["10 oz ahi tuna", "Sriracha", "Soy sauce", "Cauliflower rice", "Avocado", "Seaweed"],
+                    instructions: "Marinate tuna, serve over cauliflower rice with toppings."
+                },
+                snack2: {name: "Roasted Chickpeas", calories: "120 cal", protein: "7g protein", ingredients: ["⅔ cup chickpeas"]}
+            },
+            18: {
+                total: "1,050 calories | 90g protein",
+                meal1: {
+                    name: "Shakshuka",
+                    calories: "320 cal",
+                    protein: "20g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["4 eggs", "Tomato sauce", "Bell peppers", "Onions", "Cumin", "Paprika", "Feta"],
+                    instructions: "Simmer sauce, crack eggs into it, cook until set."
+                },
+                snack1: {name: "Greek Yogurt with Walnuts", calories: "160 cal", protein: "16g protein", ingredients: ["1 cup yogurt", "2 tbsp walnuts"]},
+                meal2: {
+                    name: "Lemon-Garlic Salmon with Green Lentils",
+                    calories: "480 cal",
+                    protein: "46g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["10 oz salmon", "Lemon", "Garlic", "2 cups cooked lentils", "Spinach", "Herbs"],
+                    instructions: "Bake salmon with lemon and garlic, serve over lentils and spinach."
+                },
+                snack2: {name: "Celery with Hummus", calories: "90 cal", protein: "8g protein", ingredients: ["Celery sticks", "4 tbsp hummus"]}
+            },
+            19: {
+                total: "1,100 calories | 103g protein",
+                meal1: {
+                    name: "Protein Overnight Oats",
+                    calories: "340 cal",
+                    protein: "26g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["1 cup oats", "2 scoops protein powder", "Chia seeds", "Almond milk", "Berries"],
+                    instructions: "Mix oats with protein and milk, refrigerate overnight."
+                },
+                snack1: {name: "Edamame", calories: "130 cal", protein: "12g protein", ingredients: ["1 cup edamame"]},
+                meal2: {
+                    name: "Thai Red Curry with Chicken",
+                    calories: "490 cal",
+                    protein: "50g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["10 oz chicken", "Red curry paste", "Coconut milk", "Vegetables", "Basil", "Brown rice"],
+                    instructions: "Cook curry with chicken and vegetables, serve over rice."
+                },
+                snack2: {name: "2 Egg Muffins", calories: "140 cal", protein: "15g protein", ingredients: ["2 egg muffins from batch prep"]}
+            },
+            20: {
+                total: "1,060 calories | 85g protein",
+                meal1: {
+                    name: "Smoked Salmon & Avocado Toast",
+                    calories: "340 cal",
+                    protein: "24g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["4 oz smoked salmon", "½ avocado", "2 slices whole grain bread", "Capers", "Lemon"],
+                    instructions: "Toast bread, top with avocado and salmon."
+                },
+                snack1: {name: "Trail Mix", calories: "150 cal", protein: "5g protein", ingredients: ["2 oz trail mix"]},
+                meal2: {
+                    name: "Indian Butter \"Chicken\" with Tofu",
+                    calories: "460 cal",
+                    protein: "30g protein",
+                    prepTime: "35 min prep",
+                    ingredients: ["12 oz tofu", "Butter chicken sauce", "Tomatoes", "Cream", "Spices", "Cauliflower rice"],
+                    instructions: "Cook tofu in butter chicken sauce, serve over cauliflower rice."
+                },
+                snack2: {name: "Greek Yogurt with Cinnamon", calories: "110 cal", protein: "16g protein", ingredients: ["¾ cup yogurt", "Cinnamon"]}
+            },
+            21: {
+                total: "1,010 calories | 94g protein",
+                meal1: {
+                    name: "Breakfast Burrito",
+                    calories: "360 cal",
+                    protein: "24g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["4 eggs", "Black beans", "Cheese", "Salsa", "2 tortillas", "Avocado"],
+                    instructions: "Scramble eggs, fill tortillas with eggs, beans, and toppings."
+                },
+                snack1: {name: "Cottage Cheese with Tomatoes", calories: "100 cal", protein: "14g protein", ingredients: ["½ cup cottage cheese", "Cherry tomatoes"]},
+                meal2: {
+                    name: "Grilled Mahi-Mahi with Mango Salsa",
+                    calories: "460 cal",
+                    protein: "48g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["10 oz mahi-mahi", "Fresh mango salsa", "Quinoa", "Grilled vegetables"],
+                    instructions: "Grill fish, top with fresh mango salsa, serve with quinoa."
+                },
+                snack2: {name: "Almonds", calories: "90 cal", protein: "8g protein", ingredients: ["20 almonds"]}
+            },
+            22: {
+                total: "1,070 calories | 94g protein",
+                meal1: {
+                    name: "Veggie-Loaded Omelet",
+                    calories: "320 cal",
+                    protein: "24g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["4 eggs", "Bell peppers", "Onions", "Mushrooms", "Spinach", "Cheese"],
+                    instructions: "Beat eggs, cook with vegetables and cheese."
+                },
+                snack1: {name: "Half Protein Shake", calories: "150 cal", protein: "13g protein", ingredients: ["1 scoop protein", "Almond milk"]},
+                meal2: {
+                    name: "Slow Cooker Chicken Curry",
+                    calories: "480 cal",
+                    protein: "46g protein",
+                    prepTime: "10 min prep",
+                    ingredients: ["10 oz chicken from batch prep", "Curry sauce", "Vegetables", "Brown rice"],
+                    instructions: "Reheat curry from batch prep, serve over rice."
+                },
+                snack2: {name: "Edamame", calories: "120 cal", protein: "11g protein", ingredients: ["1 cup edamame"]}
+            },
+            23: {
+                total: "980 calories | 83g protein",
+                meal1: {
+                    name: "Chia Pudding Protein Bowl",
+                    calories: "300 cal",
+                    protein: "22g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["4 tbsp chia seeds", "Protein powder", "Almond milk", "Berries", "Nuts"],
+                    instructions: "Mix chia with protein and milk, top with berries."
+                },
+                snack1: {name: "Hard-Boiled Egg + Bell Pepper", calories: "100 cal", protein: "7g protein", ingredients: ["2 eggs", "1 bell pepper"]},
+                meal2: {
+                    name: "Asian Tofu Steak Bowl",
+                    calories: "440 cal",
+                    protein: "32g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["12 oz tofu steaks", "Asian marinade", "Vegetables", "Brown rice", "Sesame"],
+                    instructions: "Grill marinated tofu, serve with vegetables and rice."
+                },
+                snack2: {name: "Greek Yogurt with Berries", calories: "140 cal", protein: "22g protein", ingredients: ["1 cup yogurt", "½ cup berries"]}
+            },
+            24: {
+                total: "970 calories | 70g protein",
+                meal1: {
+                    name: "Turkey & Egg Breakfast Bowl",
+                    calories: "340 cal",
+                    protein: "26g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["4 oz turkey breast", "2 eggs", "Sweet potato hash", "Avocado"],
+                    instructions: "Cook turkey and eggs, serve with roasted sweet potato."
+                },
+                snack1: {name: "Apple with Almond Butter", calories: "110 cal", protein: "3g protein", ingredients: ["1 apple", "1 tbsp almond butter"]},
+                meal2: {
+                    name: "Mexican Black Bean Burger Bowl",
+                    calories: "400 cal",
+                    protein: "28g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["2 black bean burgers", "Lettuce", "Tomatoes", "Avocado", "Salsa", "Brown rice"],
+                    instructions: "Cook black bean burgers, serve as bowl with toppings."
+                },
+                snack2: {name: "Roasted Chickpeas", calories: "120 cal", protein: "13g protein", ingredients: ["⅔ cup chickpeas"]}
+            },
+            25: {
+                total: "1,090 calories | 112g protein",
+                meal1: {
+                    name: "Green Smoothie with Collagen Boost",
+                    calories: "300 cal",
+                    protein: "30g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["2 scoops protein", "Collagen peptides", "Spinach", "Cucumber", "Green apple"],
+                    instructions: "Blend all ingredients with ice."
+                },
+                snack1: {name: "Cottage Cheese with Pineapple", calories: "110 cal", protein: "14g protein", ingredients: ["½ cup cottage cheese", "Pineapple"]},
+                meal2: {
+                    name: "Mediterranean Salmon with Greek Salad",
+                    calories: "520 cal",
+                    protein: "54g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["10 oz salmon", "Greek salad", "Feta", "Olives", "Quinoa"],
+                    instructions: "Bake salmon, serve with Greek salad and quinoa."
+                },
+                snack2: {name: "Edamame", calories: "160 cal", protein: "14g protein", ingredients: ["1.5 cups edamame"]}
+            },
+            26: {
+                total: "1,110 calories | 83g protein",
+                meal1: {
+                    name: "Savory Quinoa Breakfast Bowl",
+                    calories: "340 cal",
+                    protein: "18g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["1 cup quinoa", "2 eggs", "Vegetables", "Kimchi", "Sesame oil"],
+                    instructions: "Cook quinoa, top with fried eggs and vegetables."
+                },
+                snack1: {name: "String Cheese + Orange", calories: "130 cal", protein: "9g protein", ingredients: ["2 string cheese", "1 orange"]},
+                meal2: {
+                    name: "Korean Bibimbap Bowl",
+                    calories: "480 cal",
+                    protein: "36g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["Mixed vegetables", "2 eggs", "Gochujang", "Brown rice", "Tofu or beef"],
+                    instructions: "Arrange vegetables over rice, top with egg and gochujang."
+                },
+                snack2: {name: "Roasted Edamame", calories: "160 cal", protein: "20g protein", ingredients: ["1.5 cups edamame"]}
+            },
+            27: {
+                total: "980 calories | 99g protein",
+                meal1: {
+                    name: "Chocolate Peanut Butter Protein Smoothie",
+                    calories: "320 cal",
+                    protein: "32g protein",
+                    prepTime: "5 min prep",
+                    ingredients: ["2 scoops chocolate protein", "PB2 powder", "Banana", "Almond milk"],
+                    instructions: "Blend all ingredients until smooth."
+                },
+                snack1: {name: "Celery with Hummus", calories: "80 cal", protein: "3g protein", ingredients: ["Celery", "4 tbsp hummus"]},
+                meal2: {
+                    name: "Spiced Lentil & Turkey Bowl",
+                    calories: "460 cal",
+                    protein: "52g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["6 oz turkey", "2 cups lentils", "Spices", "Spinach", "Yogurt"],
+                    instructions: "Cook turkey with lentils and spices, top with yogurt."
+                },
+                snack2: {name: "Greek Yogurt with Cinnamon", calories: "120 cal", protein: "12g protein", ingredients: ["¾ cup yogurt", "Cinnamon"]}
+            },
+            28: {
+                total: "1,050 calories | 91g protein",
+                meal1: {
+                    name: "Hawaiian-Style Breakfast Plate",
+                    calories: "340 cal",
+                    protein: "22g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["2 eggs", "4 oz spam or turkey", "Brown rice", "Grilled pineapple"],
+                    instructions: "Fry eggs and protein, serve with rice and pineapple."
+                },
+                snack1: {name: "Trail Mix", calories: "140 cal", protein: "5g protein", ingredients: ["2 oz trail mix"]},
+                meal2: {
+                    name: "Italian Wedding Soup with Turkey Meatballs",
+                    calories: "460 cal",
+                    protein: "48g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["6 turkey meatballs", "Escarole", "White beans", "Broth", "Parmesan"],
+                    instructions: "Heat soup with meatballs, serve with parmesan."
+                },
+                snack2: {name: "Hard-Boiled Egg + Tomatoes", calories: "110 cal", protein: "16g protein", ingredients: ["2 eggs", "Cherry tomatoes"]}
+            },
+            29: {
+                total: "940 calories | 73g protein",
+                meal1: {
+                    name: "Breakfast Egg Cups with Sweet Potato Hash",
+                    calories: "300 cal",
+                    protein: "20g protein",
+                    prepTime: "15 min prep",
+                    ingredients: ["3 egg cups", "Roasted sweet potato", "Bell peppers"],
+                    instructions: "Reheat egg cups, serve with sweet potato hash."
+                },
+                snack1: {name: "Cottage Cheese with Cucumber", calories: "100 cal", protein: "14g protein", ingredients: ["½ cup cottage cheese", "Cucumber"]},
+                meal2: {
+                    name: "Thai Basil Tofu with Zoodles",
+                    calories: "420 cal",
+                    protein: "28g protein",
+                    prepTime: "25 min prep",
+                    ingredients: ["12 oz tofu", "Thai basil", "Zucchini noodles", "Thai sauce", "Peanuts"],
+                    instructions: "Stir-fry tofu with basil, serve over zoodles."
+                },
+                snack2: {name: "Apple with Almond Butter", calories: "120 cal", protein: "11g protein", ingredients: ["1 apple", "1.5 tbsp almond butter"]}
+            },
+            30: {
+                total: "1,160 calories | 107g protein",
+                meal1: {
+                    name: "Protein Pancakes with Berry Compote",
+                    calories: "360 cal",
+                    protein: "28g protein",
+                    prepTime: "20 min prep",
+                    ingredients: ["Protein pancake mix", "Eggs", "Greek yogurt", "Berry compote"],
+                    instructions: "Make protein pancakes, top with berry compote and yogurt."
+                },
+                snack1: {name: "Edamame", calories: "140 cal", protein: "13g protein", ingredients: ["1 cup edamame"]},
+                meal2: {
+                    name: "Herb-Crusted Salmon Celebration Dinner",
+                    calories: "560 cal",
+                    protein: "58g protein",
+                    prepTime: "30 min prep",
+                    ingredients: ["12 oz salmon", "Herb crust", "Roasted vegetables", "Wild rice", "Lemon butter"],
+                    instructions: "Bake herb-crusted salmon, serve with roasted vegetables and wild rice."
+                },
+                snack2: {name: "Almonds", calories: "100 cal", protein: "8g protein", ingredients: ["25 almonds"]}
+            }
+        };
+        
         var weekPrepGuides = {
             1: {
-                time: "2-2.5 hours",
-                proteins: ["Hard boil 12 eggs", "Bake 4 chicken breasts", "Cook 1 cup dry red lentils", "Press and marinate 2 tofu blocks"],
-                grains: ["Cook 6-8 cups brown rice", "Roast 6 cups mixed veg", "Prep 1 batch bok choy"],
-                sauces: ["Make tahini-lemon dressing", "Prep cucumber-tomato salad", "Chop stir-fry vegetables"],
-                freeze: null
+                time: "2.5-3 hours",
+                proteins: ["Hard boil 24 eggs", "Bake 12 chicken breasts with garlic, lemon, herbs", "Cook 6 cups dry lentils (makes ~15 cups cooked)", "Press and cube 4 blocks tofu, marinate in soy-ginger"],
+                grains: ["Cook 12 cups brown rice or quinoa", "Prep 8 cups roasted vegetables (bell peppers, zucchini, eggplant, bok choy)"],
+                sauces: ["Make tahini-lemon dressing (double batch)", "Prep cucumber-tomato salad (large batch)", "Chop vegetables for stir-fries"]
             },
             2: {
                 time: "2.5-3 hours",
-                proteins: ["Grill 3 fish fillets", "Make 10-12 turkey meatballs", "Marinate and bake 1 tempeh"],
-                grains: ["Cook 8-10 cups quinoa", "Roast 2 sheet pans vegetables", "Make Asian cabbage slaw"],
-                sauces: ["Chimichurri sauce", "Peanut sauce", "Tzatziki"],
-                freeze: "OPTIONAL: Make extra 24 turkey meatballs for Week 4"
+                proteins: ["Grill 6 pieces fresh opah or mahi-mahi (12 oz total)", "Make Italian turkey meatballs (36 count)", "Cook 6 cups chickpeas from dry", "Bake spiced tempeh cubes (4 packages)"],
+                grains: ["Cook 12 cups quinoa", "Roast 2 sheet pans: cauliflower, broccoli, Brussels sprouts", "Prep Asian-style slaw (large batch)"],
+                sauces: ["Chimichurri sauce (double batch)", "Peanut sauce with PB2 (double batch)", "Tzatziki (yogurt-cucumber, double batch)"]
             },
             3: {
-                time: "2.5-3 hours",
-                proteins: ["Make 10 egg muffin cups", "Marinate and grill 5-6 chicken thighs", "Cook 2 cups dry green lentils"],
-                grains: ["Cook 6-8 cups farro or barley", "Roast rainbow vegetables", "Make 4-6 cups cauliflower rice"],
-                sauces: ["Green goddess dressing", "Spicy peanut sauce", "Lemon-herb vinaigrette"],
-                freeze: "OPTIONAL: Make extra 14 egg muffins for Week 4"
+                time: "3-3.5 hours",
+                proteins: ["Bake 12 salmon pieces with different marinades", "Cook 6 cups green lentils", "Marinate and grill 16 chicken thighs", "Prep egg muffins (24 count: eggs, vegetables, turkey sausage)"],
+                grains: ["Cook 8 cups farro or barley", "Roast rainbow vegetables (carrots, beets, squash)", "Make 8 cups cauliflower rice"],
+                sauces: ["Green goddess dressing (double batch)", "Spicy peanut sauce (double batch)", "Lemon-herb vinaigrette (double batch)"]
             },
             4: {
                 time: "2.5-3 hours",
-                proteins: ["Slow cook 3 lbs chicken curry", "Bake 1.5 lbs turkey breast", "Make 12 black bean burger patties", "Marinate 2 tofu blocks"],
-                grains: ["Cook 12 cups wild rice blend", "Spiralize 6 zucchini", "Roast 2 sheet pans sweet potatoes"],
-                prep: ["Chop Greek salad components", "Make large batch pico de gallo", "Prep cabbage slaw"],
-                freeze: "Use frozen meatballs from Week 2 if you made them"
+                proteins: ["Slow cook 4 lbs chicken for curry", "Bake 4 lbs herb-crusted turkey breast", "Make black bean burgers (12 patties)", "Marinate tofu steaks (4 blocks)"],
+                grains: ["Cook 12 cups wild rice blend", "Prep spiralized vegetables (zucchini, carrots)", "Roast 2 sheet pans sweet potatoes with herbs"],
+                prep: ["Greek salad components (chop and store separately)", "Pico de gallo (large batch)", "Cabbage slaw (double batch)"]
             }
         };
-        
-        var mealData = {
-            1: {
-                meal1: {name: "Greek Yogurt Protein Bowl", ingredients: ["2 cups yogurt", "4 tbsp flaxseed", "1 cup berries", "20 almonds", "1 tsp honey"], instructions: "Divide yogurt into 2 bowls. Top with flaxseed, berries, almonds, honey.", calories: "320 per person", protein: "25g", prepTime: "5 min"},
-                snack1: {name: "Carrots and Hummus", ingredients: ["2 cups carrots", "4 tbsp hummus"], calories: "80 per person", protein: "3g"},
-                meal2: {name: "Miso Salmon with Bok Choy", ingredients: ["10 oz salmon", "2 tbsp miso", "1 tbsp honey", "4 cups bok choy", "1 cup rice"], instructions: "Mix miso, honey, vinegar. Brush on salmon. Bake 400F for 12-15 min. Saute bok choy.", calories: "480 per person", protein: "42g", prepTime: "25 min"},
-                snack2: {name: "Hard Boiled Egg", ingredients: ["2 eggs", "Everything seasoning"], calories: "70 per person", protein: "6g"},
-                total: "950 cal | 76g protein"
-            },
-            2: {
-                meal1: {name: "Turmeric Tofu Scramble", ingredients: ["12 oz tofu", "1 tsp turmeric", "2 cups spinach", "2 tomatoes", "1/2 avocado"], instructions: "Crumble tofu, add turmeric. Cook 5 min. Add spinach and tomatoes.", calories: "340 per person", protein: "24g", prepTime: "15 min"},
-                snack1: {name: "Apple with Almond Butter", ingredients: ["2 apples", "2 tbsp almond butter"], calories: "110 per person", protein: "3g"},
-                meal2: {name: "Lemon Herb Chicken", ingredients: ["10 oz chicken", "3 cups roasted veg", "1 cup white beans", "tahini dressing"], instructions: "Reheat chicken and veg. Warm beans. Divide into 2 plates.", calories: "440 per person", protein: "47g", prepTime: "10 min"},
-                snack2: {name: "Edamame", ingredients: ["2 cups edamame", "Sea salt"], calories: "180 per person", protein: "17g"},
-                total: "1070 cal | 91g protein"
-            }
-        };
-        
-        for(var i=3; i<=30; i++) {
-            mealData[i] = {
-                meal1: {name: "Day " + i + " Breakfast", ingredients: ["See PDF"], instructions: "Refer to PDF", calories: "300-380", protein: "20-34g", prepTime: "10-30 min"},
-                snack1: {name: "Snack", ingredients: ["See PDF"], calories: "80-180", protein: "3-21g"},
-                meal2: {name: "Day " + i + " Dinner", ingredients: ["See PDF"], instructions: "Refer to PDF", calories: "380-520", protein: "28-52g", prepTime: "15-35 min"},
-                snack2: {name: "Snack", ingredients: ["See PDF"], calories: "70-180", protein: "4-17g"},
-                total: (940 + Math.floor(Math.random()*200)) + " cal | " + (70 + Math.floor(Math.random()*40)) + "g protein"
-            };
-        }
         
         var shoppingLists = {
             1: {
-                Proteins: ["Eggs: 2 dozen", "Chicken breasts: 4 pieces", "Salmon: 2 fillets", "Tofu: 2 blocks", "Ground turkey: 10 oz", "Greek yogurt: 64 oz"],
-                Grains: ["Brown rice: 3 lbs", "Quinoa: 1 lb", "Black beans: 3 cans", "White beans: 3 cans"],
-                Vegetables: ["Spinach: 3 bunches", "Bok choy: 4 bunches", "Bell peppers: 8", "Cucumbers: 6"],
-                Fruits: ["Berries: 3 containers", "Bananas: 8", "Apples: 6", "Lemons: 8"],
-                Pantry: ["Tahini", "Hummus", "Almond butter", "Protein powder", "Miso paste"]
+                Proteins: ["Eggs: 4 dozen", "Chicken breasts: 12 (~4 lbs)", "Salmon: 6 fillets (~30 oz)", "Tofu: 4 blocks", "Greek yogurt: 64 oz", "Cottage cheese: 32 oz", "String cheese: 2 packages", "Ground turkey: 2 lbs", "Smoked salmon: 12 oz"],
+                "Legumes & Grains": ["Lentils (red & brown): 6 cups dry", "Black beans: 4 cans", "White beans: 4 cans", "Chickpeas: 2 cans", "Brown rice: 4 lbs", "Quinoa: 2 lbs", "Steel-cut oats: 2 containers", "Whole grain tortillas: 2 packages"],
+                Vegetables: ["Mixed greens: 4 containers", "Spinach: 4 bunches", "Bok choy: 6 bunches", "Bell peppers: 12", "Zucchini: 8", "Eggplant: 4", "Cucumbers: 8", "Cherry tomatoes: 4 pints", "Mushrooms: 32 oz", "Garlic: 4 bulbs", "Ginger: large piece"],
+                Fruits: ["Berries: 4 containers", "Bananas: 12", "Apples: 8", "Lemons: 12", "Limes: 8", "Mango (frozen): 2 bags", "Papaya: 2"],
+                Pantry: ["Tahini: 16 oz", "Hummus: 32 oz", "Almond butter: 16 oz", "Almonds: 2 lbs", "Hemp hearts: 16 oz", "Chia seeds: 16 oz", "Flaxseed: 24 oz", "Nutritional yeast: 8 oz", "Soy sauce: 16 oz", "Miso paste: 16 oz", "Protein powder: 2 lbs"],
+                "Hawaii Items": ["Edamame: 4 lbs", "Ahi tuna: 10 oz", "Seaweed salad: 2 containers", "Furikake seasoning"]
             },
             2: {
-                Proteins: ["Eggs: 1 dozen", "Fish: 3 fillets", "Ground turkey: 1.5 lbs", "Tempeh: 1 package"],
-                Grains: ["Quinoa: 2 lbs", "Chickpeas: 4 cans"],
-                Vegetables: ["Kale: 3 bunches", "Cabbage: 2 heads", "Brussels sprouts: 2 lbs"],
-                Fruits: ["Berries: 3 containers", "Pineapple: 1"],
-                Pantry: ["Marinara sauce", "PB2 powder", "Chocolate protein powder"]
+                Proteins: ["Opah/Mahi-mahi: 6 fillets (~36 oz)", "Ground turkey: 3 lbs", "Tempeh: 4 packages", "Salmon: 4 fillets", "Eggs: 2 dozen", "Greek yogurt: 48 oz", "Cottage cheese: 32 oz"],
+                "Legumes & Grains": ["Chickpeas: 6 cups dry or 6 cans", "White beans: 4 cans", "Lentils: 4 cans", "Quinoa: 2 lbs", "Brown rice: 2 lbs", "Rice noodles: 2 packages"],
+                Vegetables: ["Kale: 4 bunches", "Cabbage: 2 heads", "Brussels sprouts: 2 lbs", "Cauliflower: 4 heads", "Broccoli: 4 heads", "Zucchini: 12", "Bell peppers: 8", "Snap peas: 2 lbs", "Asian greens mix"],
+                Fruits: ["Berries: 4 containers", "Bananas: 8", "Apples: 6", "Oranges: 4", "Lemons: 8", "Pineapple: 2"],
+                Pantry: ["Marinara sauce: 2 jars", "Za'atar: 4 oz", "PB2 powder: 16 oz", "Dates: 16 oz", "Chocolate protein: 2 lbs", "Parmesan: small block"]
             },
             3: {
-                Proteins: ["Eggs: 2 dozen", "Chicken thighs: 6 pieces", "Turkey sausage: 1 lb", "Salmon: 2 fillets"],
-                Grains: ["Farro: 1.5 lbs", "Chickpeas: 4 cans", "Green lentils: 2 cups"],
-                Vegetables: ["Cauliflower: 2 heads", "Spinach: 4 bags", "Bell peppers: 8"],
-                Fruits: ["Pineapple: 2", "Mango: 3", "Berries: 3 containers"],
-                Pantry: ["Macadamia nuts", "Nori seaweed", "Harissa paste"]
+                Proteins: ["Salmon: 12 fillets (~4 lbs)", "Chicken thighs: 16 (~4 lbs)", "Turkey sausage: 2 lbs", "Eggs: 4 dozen", "Greek yogurt: 48 oz", "Cottage cheese: 32 oz", "Feta: 8 oz"],
+                "Legumes & Grains": ["Green lentils: 6 cups dry", "Chickpeas: 6 cans", "White beans: 4 cans", "Black beans: 4 cans", "Farro: 2 lbs", "Couscous: 2 boxes", "Wild rice: 2 lbs"],
+                Vegetables: ["Rainbow vegetables (carrots, beets, squash)", "Cauliflower: 4 heads", "Cherry tomatoes: 4 pints", "Cucumbers: 8", "Spinach: 4 bags", "Bell peppers: 12", "Zucchini: 8", "Mushrooms: 32 oz"],
+                Fruits: ["Pineapple: 2 fresh", "Mango: 4", "Papaya: 2", "Passion fruit: 6", "Berries: 4 containers", "Avocados: 8", "Lemons: 12"],
+                Pantry: ["Macadamia nuts: 8 oz", "Nori sheets", "Wakame: 4 oz", "Artichoke hearts: 2 jars", "Harissa: 8 oz", "Walnuts: 16 oz"]
             },
             4: {
-                Proteins: ["Eggs: 3 dozen", "Chicken: 3 lbs", "Turkey: 1.5 lbs", "Tofu: 2 blocks", "Salmon: 4 fillets"],
-                Grains: ["Wild rice: 2 lbs", "Black beans: 6 cans", "Quinoa: 2 lbs"],
-                Vegetables: ["Sweet potatoes: 6", "Kale: 3 bunches", "Zucchini: 6", "Mushrooms: 32 oz"],
-                Fruits: ["Berries: 4 containers", "Bananas: 8", "Avocados: 4"],
-                Pantry: ["Curry paste", "Coconut milk: 3 cans", "Gochujang"]
+                Proteins: ["Chicken breasts: 4 lbs", "Turkey breast: 4 lbs", "Tofu: 4 blocks", "Eggs: 4 dozen", "Greek yogurt: 64 oz", "Cottage cheese: 32 oz", "Salmon: 4 fillets", "Ahi/Mahi: 12 oz"],
+                "Legumes & Grains": ["Black beans: 6 cans", "White beans: 4 cans", "Lentils: 4 cans", "Brown rice: 2 lbs", "Wild rice: 2 lbs", "Quinoa: 2 lbs", "Oats: 32 oz"],
+                Vegetables: ["Sweet potatoes: 8", "Kale: 4 bunches", "Spinach: 4 bags", "Zucchini: 8 for spiralizing", "Carrots: 4 bags", "Bell peppers: 8", "Mushrooms: 48 oz", "Bok choy: 4 bunches"],
+                Fruits: ["Pineapple: 2 containers", "Mango: 2", "Berries: 4 containers", "Bananas: 8", "Apples: 6", "Avocados: 6"],
+                Pantry: ["Curry paste: red & yellow", "Gochujang: 8 oz", "Coconut milk: 4 cans", "Breadcrumbs: 16 oz", "String cheese: 2 packages", "Trail mix: 16 oz"]
             }
         };
         
@@ -316,8 +918,6 @@
             html += '<div class="ingredients"><ul>';
             m.snack2.ingredients.forEach(function(ing) { html += '<li>' + ing + '</li>'; });
             html += '</ul></div></div>';
-            
-            if(day > 2) html += '<div class="alert-box"><p><strong>Note:</strong> Days 3-30 show summary. See PDF for complete recipes.</p></div>';
             
             document.getElementById('dayContent').innerHTML = html;
         }
